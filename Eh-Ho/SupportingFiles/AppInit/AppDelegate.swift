@@ -29,8 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let tabBar = TabBarController(categoriesController: CategoriesRouter.configureModule(), addController: CreateTopicsRouter.configureModule(), users: UsersRouter.configureModule())
-        window?.rootViewController = tabBar
+//        let tabBar = TabBarController(categoriesController: CategoriesRouter.configureModule(), addController: CreateTopicsRouter.configureModule(), users: UsersRouter.configureModule())
+        let vc = PantallaInicialViewController()
+        
+        window?.rootViewController = vc
         
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         print(urls[urls.count-1] as URL)
