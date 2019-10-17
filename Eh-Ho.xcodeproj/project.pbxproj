@@ -26,6 +26,9 @@
 		118EF0F622E36F0200F57FA2 /* PostsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118EF0F422E36F0200F57FA2 /* PostsViewController.xib */; };
 		118EF0F822E36F2900F57FA2 /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EF0F722E36F2900F57FA2 /* PostRouter.swift */; };
 		118EF0FA22E36F3B00F57FA2 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EF0F922E36F3B00F57FA2 /* PostViewModel.swift */; };
+		1195AD762357EE720056E58F /* SFProDisplay-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1195AD732357EE710056E58F /* SFProDisplay-UltraLight.ttf */; };
+		1195AD772357EE720056E58F /* SFProDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1195AD742357EE720056E58F /* SFProDisplay-Black.ttf */; };
+		1195AD782357EE720056E58F /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1195AD752357EE720056E58F /* SFProDisplay-Bold.ttf */; };
 		11A4529122E982D200439C70 /* CreateTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A4528F22E982D200439C70 /* CreateTopicsViewController.swift */; };
 		11A4529222E982D200439C70 /* CreateTopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A4529022E982D200439C70 /* CreateTopicsViewController.xib */; };
 		11A4529422E9830D00439C70 /* CreateTopisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A4529322E9830D00439C70 /* CreateTopisViewModel.swift */; };
@@ -113,6 +116,9 @@
 		118EF0F422E36F0200F57FA2 /* PostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostsViewController.xib; sourceTree = "<group>"; };
 		118EF0F722E36F2900F57FA2 /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
 		118EF0F922E36F3B00F57FA2 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		1195AD732357EE710056E58F /* SFProDisplay-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-UltraLight.ttf"; sourceTree = "<group>"; };
+		1195AD742357EE720056E58F /* SFProDisplay-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Black.ttf"; sourceTree = "<group>"; };
+		1195AD752357EE720056E58F /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		11A4528F22E982D200439C70 /* CreateTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTopicsViewController.swift; sourceTree = "<group>"; };
 		11A4529022E982D200439C70 /* CreateTopicsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateTopicsViewController.xib; sourceTree = "<group>"; };
 		11A4529322E9830D00439C70 /* CreateTopisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTopisViewModel.swift; sourceTree = "<group>"; };
@@ -214,6 +220,16 @@
 				118EF0F922E36F3B00F57FA2 /* PostViewModel.swift */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		1195AD722357EE550056E58F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1195AD742357EE720056E58F /* SFProDisplay-Black.ttf */,
+				1195AD752357EE720056E58F /* SFProDisplay-Bold.ttf */,
+				1195AD732357EE710056E58F /* SFProDisplay-UltraLight.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		11A4528E22E9828D00439C70 /* CreateTopics */ = {
@@ -397,6 +413,7 @@
 		742A18AD22DE53D9004C544D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1195AD722357EE550056E58F /* Fonts */,
 				742A18AE22DE53E4004C544D /* ArtWork */,
 			);
 			path = Resources;
@@ -616,6 +633,7 @@
 			files = (
 				11D43F7322EC47B10053933A /* SendMessageViewController.xib in Resources */,
 				742A18A422DE530B004C544D /* LaunchScreen.storyboard in Resources */,
+				1195AD762357EE720056E58F /* SFProDisplay-UltraLight.ttf in Resources */,
 				742A18A122DE530B004C544D /* Assets.xcassets in Resources */,
 				11E55FAB22E23163008FD871 /* CategoriesViewController.xib in Resources */,
 				11A4529222E982D200439C70 /* CreateTopicsViewController.xib in Resources */,
@@ -627,6 +645,8 @@
 				11C03B132357859700C5ED3D /* PantallaInicialViewController.xib in Resources */,
 				118EF0F622E36F0200F57FA2 /* PostsViewController.xib in Resources */,
 				11B3D2A922E580D400F81497 /* PostCreateViewController.xib in Resources */,
+				1195AD772357EE720056E58F /* SFProDisplay-Black.ttf in Resources */,
+				1195AD782357EE720056E58F /* SFProDisplay-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

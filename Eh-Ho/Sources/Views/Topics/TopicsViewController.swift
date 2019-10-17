@@ -53,7 +53,6 @@ class TopicsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 60
-        self.title = "Topics"
         
         let cell = UINib(nibName: "TopicCell", bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: UITableViewCell.identifier)

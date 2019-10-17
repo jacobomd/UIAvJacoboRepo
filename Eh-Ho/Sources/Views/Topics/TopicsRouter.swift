@@ -28,6 +28,7 @@ class TopicsRouter {
     
     func navigateToPosts(id: Int) {
         let viewControllerToPush = PostRouter.configureModule(id: id)
+        viewControllerToPush.hidesBottomBarWhenPushed = true
         viewController?.navigationController?.pushViewController(viewControllerToPush, animated: true)
     }
 }
