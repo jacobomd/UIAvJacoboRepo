@@ -44,7 +44,7 @@
                     <rect key="frame" x="0.0" y="176" width="414" height="151"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="41g-cY-A2f">
-                    <rect key="frame" x="0.0" y="327" width="414" height="486"/>
+                    <rect key="frame" x="0.0" y="327" width="414" height="569"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAD-tt-eYW">
@@ -64,10 +64,10 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="zAD-tt-eYW" secondAttribute="bottom" constant="100" id="PwP-ui-V94"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zAD-tt-eYW" secondAttribute="trailing" constant="20" id="Qjd-sC-8Fj"/>
                 <constraint firstItem="1VS-k1-9GT" firstAttribute="top" secondItem="ZaU-Tn-cg8" secondAttribute="bottom" constant="10" id="XL9-N4-NW7"/>
+                <constraint firstAttribute="bottom" secondItem="41g-cY-A2f" secondAttribute="bottom" id="a2Q-fc-rLG"/>
                 <constraint firstItem="Ab5-zB-fLt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cm9-5l-LWA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ab5-zB-fLt" secondAttribute="trailing" id="fN5-Er-RFU"/>
                 <constraint firstItem="Ab5-zB-fLt" firstAttribute="top" secondItem="1VS-k1-9GT" secondAttribute="bottom" id="nmc-hS-jXa"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="41g-cY-A2f" secondAttribute="bottom" id="qZh-4G-cjt"/>
                 <constraint firstItem="ZaU-Tn-cg8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="rt9-qq-0oX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1VS-k1-9GT" secondAttribute="trailing" constant="10" id="tD2-D7-bBu"/>
             </constraints>

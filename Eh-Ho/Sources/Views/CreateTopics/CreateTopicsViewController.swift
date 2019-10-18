@@ -34,7 +34,7 @@ class CreateTopicsViewController: UIViewController {
         textfieldTitulo.placeholder = "Introduce el titulo"
         textfieldDescripcion.placeholder = "Intoduce la descripcion ..."
 
-        self.title = "Crear topics"
+        //self.title = "Crear topics"
     }
 
     @IBAction func buttonCrearTopic(_ sender: Any) {

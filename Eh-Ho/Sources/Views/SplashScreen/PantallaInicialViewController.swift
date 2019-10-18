@@ -50,7 +50,10 @@ class PantallaInicialViewController: UIViewController {
         }) { (success) in
             
             if success {
-                let tabBar = TabBarController(categoriesController: CategoriesRouter.configureModule(), addController: CreateTopicsRouter.configureModule(), users: UsersRouter.configureModule())
+                let tabBar = TabBarController(inicio: CategoriesRouter.configureModule(),
+                                              usuarios: UsersRouter.configureModule(),
+                                              mensajes: CreateTopicsRouter.configureModule()
+                                              )
                 
                 self.present(tabBar, animated: true, completion: nil)
             }

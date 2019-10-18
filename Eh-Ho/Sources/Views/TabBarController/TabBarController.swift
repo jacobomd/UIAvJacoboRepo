@@ -10,14 +10,17 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
-    let categoriesController: UIViewController
-    let addController: UIViewController
-    let users: UIViewController
+    let inicio: UIViewController
+    let usuarios: UIViewController
+    let mensajes: UIViewController
+   // let ajustes: UIViewController
+
     
-    init(categoriesController: UIViewController, addController: UIViewController, users: UIViewController) {
-        self.categoriesController = categoriesController
-        self.addController = addController
-        self.users = users
+    init(inicio: UIViewController, usuarios: UIViewController, mensajes: UIViewController) {
+        self.inicio = inicio
+        self.usuarios = usuarios
+        self.mensajes = mensajes
+        //self.ajustes = ajustes
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -37,19 +40,38 @@ class TabBarController: UITabBarController {
     }
     
     private func configureTabBar() {
-        let categoriesController = self.categoriesController
-        categoriesController.tabBarItem = UITabBarItem(title: "Topics", image: nil, selectedImage: nil)
+        let inicio = self.inicio
+        inicio.tabBarItem = UITabBarItem(title: "Inicio",
+                                                       image: UIImage(named: "tabBar_inicioOff")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal),
+                                                       selectedImage: UIImage(named: "tabBar_inicioOn")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
         
-        let addController = self.addController
-        addController.tabBarItem = UITabBarItem(title: "Añadir", image: nil, selectedImage: nil)
+        let usuarios = self.usuarios
+        usuarios.tabBarItem = UITabBarItem(title: "Usuarios",
+                                                image: UIImage(named: "tabBar_usuarioOff")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal),
+                                                selectedImage: UIImage(named: "tabBar_usuarioOn")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
         
-        let users = self.users
-        users.tabBarItem = UITabBarItem(title: "Usuarios", image: nil, selectedImage: nil)
+        let mensajes = self.mensajes
+        mensajes.tabBarItem = UITabBarItem(title: "Mensajes",
+                                        image: UIImage(named: "tabBar_mensajeOff")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal),
+                                        selectedImage: UIImage(named: "tabBar_mensajeOn")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
+        
+        let ajustes = UIViewController()
+        ajustes.tabBarItem = UITabBarItem(title: "Ajustes",
+                                           image: UIImage(named: "tabBar_ajustesOff")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal),
+                                           selectedImage: UIImage(named: "tabBar_ajustesOn")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal))
         
         
+       
+        
+        let colorSelected = UIColor(red: 291/255, green: 99/255, blue: 0/255, alpha: 1.0)
+        let colorUnSelected = UIColor(red: 12/255, green: 12/255, blue: 12/255, alpha: 1.0)
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: colorSelected], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: colorUnSelected], for: .normal)
+
         self.tabBar.barTintColor = .white
         
-        let controllers = [categoriesController,addController,users]
+        let controllers = [inicio, usuarios, mensajes, ajustes]
         self.viewControllers = controllers.map { UINavigationController(rootViewController: $0) }
      
 

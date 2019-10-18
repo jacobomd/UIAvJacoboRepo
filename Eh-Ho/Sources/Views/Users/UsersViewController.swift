@@ -36,7 +36,7 @@ class UsersViewController: UIViewController {
         tableUsers.dataSource = self
         print("la cantidad de usuarios son \(users.count)")
         tableUsers.rowHeight = 60
-        self.title = "Usuarios"
+        //self.title = "Usuarios"
 
         let cell = UINib(nibName: "UsersTableViewCell", bundle: nil)
         tableUsers.register(cell, forCellReuseIdentifier: UITableViewCell.identifier)
