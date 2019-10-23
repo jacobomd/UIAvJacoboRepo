@@ -10,7 +10,7 @@ import Foundation
 
 struct SingleTopicRequest: APIRequest {
     
-    typealias Response = SingleTopicResponse
+    typealias Response = SingleTopicResponse2
     
     let id: Int
     

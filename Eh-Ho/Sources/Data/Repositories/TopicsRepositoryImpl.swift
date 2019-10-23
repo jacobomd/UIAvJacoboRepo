@@ -17,7 +17,7 @@ class TopicsRepositoryImpl: TopicsRepository {
         self.session = session
     }
 
-    func getSingleTopicById(id: Int, completion: @escaping (Result<SingleTopicResponse, Error>) -> ()) {
+    func getSingleTopicById(id: Int, completion: @escaping (Result<SingleTopicResponse2, Error>) -> ()) {
         let request = SingleTopicRequest(id: id)
         session.send(request: request) { result in
             completion(result)

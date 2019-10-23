@@ -26,9 +26,11 @@ final class SessionAPI {
                     let model = try JSONDecoder().decode(T.Response.self, from: data)
                     DispatchQueue.main.async {
                         completion(.success(model))
+                        
                     }
                 }
             } catch _ {
+                //print( String(data: data!, encoding: String.Encoding.utf8))
             }
         }
         task.resume()

@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProDisplay-Bold.ttf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateTopicsViewController" customModule="Eh_Ho" customModuleProvider="target">
             <connections>
@@ -50,15 +55,25 @@
                         </button>
                     </subviews>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crear Topic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Boa-oG-xVr">
+                    <rect key="frame" x="10" y="106.5" width="144.5" height="33.5"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Boa-oG-xVr" secondAttribute="trailing" constant="10" id="1U0-BR-jtO"/>
+                <constraint firstItem="qI3-iG-HCa" firstAttribute="top" secondItem="Boa-oG-xVr" secondAttribute="bottom" constant="10" id="HzQ-bB-eTz"/>
                 <constraint firstItem="qI3-iG-HCa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="150" id="NV9-yZ-JaR"/>
                 <constraint firstAttribute="bottom" secondItem="qI3-iG-HCa" secondAttribute="bottom" constant="400" id="PfC-bF-oL7"/>
                 <constraint firstAttribute="trailing" secondItem="qI3-iG-HCa" secondAttribute="trailing" constant="10" id="fd9-pT-Z8h"/>
                 <constraint firstItem="qI3-iG-HCa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="k6w-rq-rZU"/>
+                <constraint firstItem="Boa-oG-xVr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="ypR-se-wv3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="73.913043478260875" y="39.508928571428569"/>
         </view>
     </objects>
 </document>

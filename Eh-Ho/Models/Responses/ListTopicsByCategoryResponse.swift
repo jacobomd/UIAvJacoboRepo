@@ -57,6 +57,7 @@ struct Topic: Codable {
     let archetype, lastPosterUsername: String?
     let categoryID: Int
     let pinnedGlobally: Bool
+    let posters: [Poster]
 
     
     enum CodingKeys: String, CodingKey {
@@ -78,7 +79,23 @@ struct Topic: Codable {
         case lastPosterUsername = "last_poster_username"
         case categoryID = "category_id"
         case pinnedGlobally = "pinned_globally"
+        case posters = "posters"
 
+    }
+}
+
+// MARK: - Poster
+struct Poster: Codable {
+    let extras: String?
+    let description: String
+    let userID: Int
+    let primary_group_id: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case extras = "extras"
+        case description = "description"
+        case userID = "user_id"
+        case primary_group_id = "primary_group_id"
     }
 }
 

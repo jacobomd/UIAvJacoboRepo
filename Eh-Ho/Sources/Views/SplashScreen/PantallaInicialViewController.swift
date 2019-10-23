@@ -64,7 +64,7 @@ class PantallaInicialViewController: UIViewController {
     
     private func createView() {
         
-        logo_Rectangulo.translatesAutoresizingMaskIntoConstraints = true
+        logo_Rectangulo.translatesAutoresizingMaskIntoConstraints = false
         //logo_Rectangulo.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
             logo_Rectangulo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0),
@@ -73,7 +73,7 @@ class PantallaInicialViewController: UIViewController {
             logo_Rectangulo.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0.0)
             ])
         
-        logo_Triangulo.translatesAutoresizingMaskIntoConstraints = true
+        logo_Triangulo.translatesAutoresizingMaskIntoConstraints = false
         //logo_Triangulo.contentMode = .scaleToFill
         NSLayoutConstraint.activate([
             logo_Triangulo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0),
@@ -82,7 +82,7 @@ class PantallaInicialViewController: UIViewController {
             logo_Triangulo.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0.0)
             ])
         
-        logo.translatesAutoresizingMaskIntoConstraints = true
+        logo.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             logo.heightAnchor.constraint(equalToConstant: 141.0),
             logo.widthAnchor.constraint(equalToConstant: 274.0),

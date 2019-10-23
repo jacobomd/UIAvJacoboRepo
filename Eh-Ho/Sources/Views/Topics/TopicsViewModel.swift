@@ -25,11 +25,20 @@ class TopicsViewModel {
     }
     
     func viewDidLoad() {
-       fetchListTopicsByCategory()
+        fetchListTopicsByCategory()
+        
     }
     
     func didTapInTopic(id: Int) {
         router.navigateToPosts(id: id)
+    }
+    
+    func didTapSingleTopic(id: Int) {
+        fetchSingleTopic(id: id)
+    }
+    
+    func enviarData(singleTopic: SingleTopicResponse2) {
+        
     }
     
     private func fetchListTopicsByCategory() {
@@ -37,16 +46,32 @@ class TopicsViewModel {
        topicsRepository.getListTopicsByCategory(id: id) { [weak self] result in
            switch result {
            case .success(let value):
-              self?.view?.showListTopicsByCategory(topics: value.topicList.topics)
+            self?.view?.showListTopicsByCategory(topics: value.topicList.topics, users: value.users)
               self?.mDataManagerTopic.saveTopics(topic: value.topicList.topics)
               self?.mDataManagerTopic.saveLastDownload()
-            print("llega el valor")
+            print("llega el valor de la lissta de topicsssss")
           case .failure:
                 self?.view?.showError(with: "Error")
            }
         }
         } else {
             self.view?.showListTopicsCD(topics: mDataManagerTopic.dataTopics(id: id))
+        }
+    }
+    
+    private func fetchSingleTopic(id: Int) {
+        topicsRepository.getSingleTopicById(id: id) { result in
+            switch result {
+            case .success(let value):
+                //Enviariamos a la vista para mostrar la info
+                
+                self.view?.showSingleTopicById(singleTopic: value)
+                print("LLEGA EL VALOR")
+            case .failure(let error):
+                //Enviaremos a la vista el error
+                print("\(error)")
+                break
+            }
         }
     }
 }

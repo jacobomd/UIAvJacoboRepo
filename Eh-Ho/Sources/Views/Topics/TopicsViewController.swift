@@ -11,6 +11,14 @@ import UIKit
 class TopicsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var text_Descrip: UIImageView!
+    @IBOutlet weak var temas_Title: UILabel!
+    @IBOutlet weak var buttonAddTopic: UIButton!
+    @IBOutlet weak var buttonAddTopicBig: UIButton!
+    @IBOutlet weak var buttonSearch: UIButton!
+    
+    
+    
     
     lazy var refreshControl:UIRefreshControl = {
         let refresControl = UIRefreshControl()
@@ -34,6 +42,10 @@ class TopicsViewController: UIViewController {
     
     let viewModel: TopicsViewModel
     var topics: [Topic] = []
+    var singleTopic: SingleTopicResponse2?
+    var avatarUserTopic: String?
+    var idTopics: Int = 0
+    var users: [User] = []
     var topicsCD : [TopicData] = []
     var connection : Bool = true
     
@@ -50,16 +62,86 @@ class TopicsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 60
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = TopicCell.estimateRowHeight()
         
         let cell = UINib(nibName: "TopicCell", bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: UITableViewCell.identifier)
         
         viewModel.viewDidLoad()
         tableView.refreshControl = refreshControl
+
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //createView()
+    }
+    
+    
+    private func createView() {
+        
+        buttonAddTopic.translatesAutoresizingMaskIntoConstraints = false
+        buttonSearch.translatesAutoresizingMaskIntoConstraints = false
+        temas_Title.translatesAutoresizingMaskIntoConstraints = false
+        text_Descrip.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        buttonAddTopicBig.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            buttonAddTopic.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10.0),
+            buttonAddTopic.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+            buttonAddTopic.bottomAnchor.constraint(equalTo: temas_Title.topAnchor, constant: 0.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            buttonSearch.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10.0),
+            buttonSearch.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            temas_Title.topAnchor.constraint(equalTo: buttonAddTopic.bottomAnchor, constant: 0.0),
+            temas_Title.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+            temas_Title.trailingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 10.0),
+            temas_Title.bottomAnchor.constraint(equalTo: text_Descrip.topAnchor, constant: 0.0),
+            ])
+        
+        NSLayoutConstraint.activate([
+            text_Descrip.topAnchor.constraint(equalTo: temas_Title.bottomAnchor, constant: 0.0),
+            text_Descrip.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0.0),
+            text_Descrip.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0.0),
+            text_Descrip.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: 0.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: text_Descrip.bottomAnchor, constant: 0.0),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0.0),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0.0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            buttonAddTopicBig.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50.0),
+            buttonAddTopicBig.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20.0)
+            ])
+        
+    }
+    
+    
+    @IBAction func buttonAddTopic(_ sender: Any) {
+        navigationController?.pushViewController(CreateTopicsRouter.configureModule(), animated: true)
+    }
+    
+
+    
+    @IBAction func buttonAddTopicBig(_ sender: Any) {
+        navigationController?.pushViewController(CreateTopicsRouter.configureModule(), animated: true)
+    }
+    
+    
 }
 
 extension TopicsViewController: UITableViewDataSource {
@@ -80,16 +162,54 @@ extension TopicsViewController: UITableViewDataSource {
         }
         
         if connection {
+            
+            idTopics = topics[indexPath.row].id
+            viewModel.didTapSingleTopic(id: idTopics)
+            
+            //let avatar = singleTopic?.title
+            
+            //print("el avatar es : \(avatar)")
+            
             let title = topics[indexPath.row].title
             let numVisitas = topics[indexPath.row].views
-            cell.configure(title: title, numVisitas: "Numero de visitas : \(numVisitas)")
+            let numComents = topics[indexPath.row].postsCount
+            let dateTopic = topics[indexPath.row].createdAt!
+            
+
+            
+            let dateTopicFormater = convertDateFormater(date: dateTopic)
+ 
+           // cell.configure(title: title, numVisitas: "\(numVisitas)", numComents: "\(numComents)", dateTopic: "\(dateTopicFormater)", avatarUser: avatarUser!)
+            
+            cell.configure(title: title, numVisitas: "\(numVisitas)", numComents: "\(numComents)", dateTopic: "\(dateTopicFormater)")
+            
         } else {
-            let title = topicsCD[indexPath.row].title
-            let numVisitas = topicsCD[indexPath.row].views
-            cell.configure(title: title, numVisitas: "Numero de visitas : \(numVisitas)")
+//            let title = topicsCD[indexPath.row].title
+//            let numVisitas = topicsCD[indexPath.row].views
+//            let numComents = topicsCD[indexPath.row].postsCount
+//            let dateTopic = topicsCD[indexPath.row].createdAt
+//            cell.configure(title: title, numVisitas: "\(numVisitas)", numComents: "\(numComents)", dateTopic: dateTopic!)
         }
         
         return cell
+    }
+    
+    private func convertDateFormater(date: String) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        
+        guard let date = dateFormatter.date(from: date) else {
+            assert(false, "no date from string")
+            
+        }
+        
+        dateFormatter.dateFormat = " MMM dd "
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        let timeStamp = dateFormatter.string(from: date)
+        return timeStamp
+        
     }
 }
 
@@ -107,7 +227,8 @@ extension TopicsViewController: UITableViewDelegate {
 
 // MARK: - ViewModel Communication
 protocol TopicsViewControllerProtocol: class {
-    func showListTopicsByCategory(topics: [Topic])
+    func showListTopicsByCategory(topics: [Topic], users: [User])
+    func showSingleTopicById(singleTopic: SingleTopicResponse2)
     func showError(with message: String)
     func showListTopicsCD(topics: [TopicData])
 }
@@ -115,9 +236,15 @@ protocol TopicsViewControllerProtocol: class {
 extension TopicsViewController: TopicsViewControllerProtocol {
 
     
-    func showListTopicsByCategory(topics: [Topic]) {
+    func showListTopicsByCategory(topics: [Topic], users: [User]) {
         self.topics = topics
+        self.users = users
         self.tableView.reloadData()
+    }
+    
+    func showSingleTopicById(singleTopic: SingleTopicResponse2) {
+        self.singleTopic = singleTopic
+        print(" ahora dentro de la vista : \(singleTopic.userID)")
     }
     
     func showError(with message: String) {
