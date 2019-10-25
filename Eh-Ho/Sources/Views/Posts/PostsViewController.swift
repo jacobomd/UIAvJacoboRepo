@@ -11,6 +11,7 @@ import UIKit
 class PostsViewController: UIViewController {
 
     @IBOutlet weak var tableViewPosts: UITableView!
+    @IBOutlet weak var titleTopic: UILabel!
     
     var posts : [Post2] = []
     var postsCD : [PostData] = []
@@ -68,15 +69,35 @@ class PostsViewController: UIViewController {
         viewModel.viewDidLoad()
         
         tableViewPosts.refreshControl = refreshControl
+        
 
     }
+
     
-    // Mark: - UI
-    func setupUI() {
+     //Mark: - UI
+    func setupUI(editable: Bool) {
+
+        let backItem = UIBarButtonItem()
+        backItem.title = "Volver"
+        let color = UIColor(red: 291/255, green: 99/255, blue: 0/255, alpha: 1.0)
+        backItem.tintColor = color
+        navigationItem.backBarButtonItem = backItem
         // Button creation
-        let editTopic = UIBarButtonItem(title: "Editar topic", style: .plain, target: self, action: #selector(displayEdit))
-        // Add button
-        navigationItem.rightBarButtonItems = [editTopic]
+        let editTopic = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(displayEdit))
+        editTopic.tintColor = color
+        editTopic.image = UIImage(named: "icon_edit")
+
+        let searchTopic = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        searchTopic.tintColor = color
+        searchTopic.image = UIImage(named: "temas_Search")
+
+        if editable {
+            // Add button
+            navigationItem.rightBarButtonItems = [searchTopic, editTopic]
+        } else {
+            navigationItem.rightBarButtonItems = [searchTopic]
+        }
+
     }
     
     // Mark: - Navigation
@@ -131,15 +152,18 @@ extension PostsViewController: UITableViewDataSource {
             cell.textLabel?.text = posts[indexPath.row].cooked
             id = posts[indexPath.row].topicID
             editable_topic  = posts[indexPath.row].canEdit
+            var titulo = posts[indexPath.row].topicSlug
+            
+            titulo = titulo.replacingOccurrences(of: "-", with: " ", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
+            titleTopic.text = titulo
+      
         } else {
             cell.textLabel?.text = postsCD[indexPath.row].cooked
             id = postsCD[indexPath.row].topicId
             editable_topic  = postsCD[indexPath.row].canEdit
         }
         
-        if (editable_topic) {
-            setupUI()
-        }
+        setupUI(editable: editable_topic)
         
         return cell
     }
@@ -175,5 +199,15 @@ extension PostsViewController: PostsViewControllerProtocol {
     func showListPostsCD(post: [PostData]) {
         connection = false
         postsCD = post
+    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
     }
 }

@@ -60,6 +60,15 @@ class CategoriesViewController: UIViewController {
         
         viewModel.viewDidLoad()
         categoriesTable.refreshControl = refreshControl
+        setUI()
+    }
+    
+    private func setUI() {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Volver"
+        let color = UIColor(red: 291/255, green: 99/255, blue: 0/255, alpha: 1.0)
+        backItem.tintColor = color
+        navigationItem.backBarButtonItem = backItem
     }
     
     override func viewDidAppear(_ animated: Bool) {

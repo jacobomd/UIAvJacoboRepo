@@ -23,7 +23,7 @@ class TopicCell: UITableViewCell {
     }
 
 
-    //func configure( title: String, numVisitas: String, numComents: String, dateTopic: String, avatarUser: String) {
+    //func configure( title: String, numVisitas: String, numComents: String, dateTopic: String, avatar: String) {
     func configure( title: String, numVisitas: String, numComents: String, dateTopic: String) {
         titleTopicLabel.text = title
         numVisitasLabel.text = numVisitas

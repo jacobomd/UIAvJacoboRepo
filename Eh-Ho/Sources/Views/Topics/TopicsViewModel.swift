@@ -12,6 +12,8 @@ class TopicsViewModel {
     
     weak var view: TopicsViewControllerProtocol?
     
+    var singleTopic: SingleTopicResponse2?
+    
     private let mDataManagerTopic = DataManager()
     
     let router: TopicsRouter
@@ -33,13 +35,11 @@ class TopicsViewModel {
         router.navigateToPosts(id: id)
     }
     
-    func didTapSingleTopic(id: Int) {
-        fetchSingleTopic(id: id)
-    }
+//    func didTapSingleTopic(id: Int) {
+//        fetchSingleTopic(id: id)
+//    }
     
-    func enviarData(singleTopic: SingleTopicResponse2) {
-        
-    }
+
     
     private func fetchListTopicsByCategory() {
         if CheckInternet.Connection() {
@@ -59,18 +59,17 @@ class TopicsViewModel {
         }
     }
     
-    private func fetchSingleTopic(id: Int) {
+    func fetchSingleTopic(id: Int)  {
         topicsRepository.getSingleTopicById(id: id) { result in
             switch result {
             case .success(let value):
                 //Enviariamos a la vista para mostrar la info
-                
                 self.view?.showSingleTopicById(singleTopic: value)
-                print("LLEGA EL VALOR")
+                //avatar = value.details.createdBy.avatarTemplate
+                print("LLEGA EL VALOR \(value.details.createdBy.avatarTemplate)")
             case .failure(let error):
                 //Enviaremos a la vista el error
                 print("\(error)")
-                break
             }
         }
     }

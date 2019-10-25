@@ -40,10 +40,12 @@ class TopicsViewController: UIViewController {
         
     }
     
+
+    
     let viewModel: TopicsViewModel
     var topics: [Topic] = []
     var singleTopic: SingleTopicResponse2?
-    var avatarUserTopic: String?
+    var avatarUserTopic: String = ""
     var idTopics: Int = 0
     var users: [User] = []
     var topicsCD : [TopicData] = []
@@ -73,7 +75,16 @@ class TopicsViewController: UIViewController {
         
         viewModel.viewDidLoad()
         tableView.refreshControl = refreshControl
+        setUI()
 
+    }
+    
+    private func setUI() {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Volver"
+        let color = UIColor(red: 291/255, green: 99/255, blue: 0/255, alpha: 1.0)
+        backItem.tintColor = color
+        navigationItem.backBarButtonItem = backItem
     }
     
     override func viewDidLayoutSubviews() {
@@ -130,7 +141,7 @@ class TopicsViewController: UIViewController {
         
     }
     
-    
+ 
     @IBAction func buttonAddTopic(_ sender: Any) {
         navigationController?.pushViewController(CreateTopicsRouter.configureModule(), animated: true)
     }
@@ -164,22 +175,20 @@ extension TopicsViewController: UITableViewDataSource {
         if connection {
             
             idTopics = topics[indexPath.row].id
-            viewModel.didTapSingleTopic(id: idTopics)
-            
-            //let avatar = singleTopic?.title
-            
-            //print("el avatar es : \(avatar)")
             
             let title = topics[indexPath.row].title
             let numVisitas = topics[indexPath.row].views
             let numComents = topics[indexPath.row].postsCount
             let dateTopic = topics[indexPath.row].createdAt!
+          
+             viewModel.fetchSingleTopic(id: idTopics)
             
-
-            
+//            let prueba = singleTopic?.details.createdBy.avatarTemplate
+//            print("el avatar dentro de la tableview es \(prueba)")
+        
             let dateTopicFormater = convertDateFormater(date: dateTopic)
  
-           // cell.configure(title: title, numVisitas: "\(numVisitas)", numComents: "\(numComents)", dateTopic: "\(dateTopicFormater)", avatarUser: avatarUser!)
+            //cell.configure(title: title, numVisitas: "\(numVisitas)", numComents: "\(numComents)", dateTopic: "\(dateTopicFormater)", avatar: avatar)
             
             cell.configure(title: title, numVisitas: "\(numVisitas)", numComents: "\(numComents)", dateTopic: "\(dateTopicFormater)")
             
@@ -244,7 +253,8 @@ extension TopicsViewController: TopicsViewControllerProtocol {
     
     func showSingleTopicById(singleTopic: SingleTopicResponse2) {
         self.singleTopic = singleTopic
-        print(" ahora dentro de la vista : \(singleTopic.userID)")
+       let  prueba = singleTopic.details.createdBy.avatarTemplate
+        print(" ahora dentro de la vista : \(prueba)")
     }
     
     func showError(with message: String) {
