@@ -134,6 +134,10 @@ class PostsViewController: UIViewController {
 
 extension PostsViewController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.size.height
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if connection {
             return posts.count
