@@ -31,6 +31,7 @@
 		1195AD762357EE720056E58F /* SFProDisplay-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1195AD732357EE710056E58F /* SFProDisplay-UltraLight.ttf */; };
 		1195AD772357EE720056E58F /* SFProDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1195AD742357EE720056E58F /* SFProDisplay-Black.ttf */; };
 		1195AD782357EE720056E58F /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1195AD752357EE720056E58F /* SFProDisplay-Bold.ttf */; };
+		119C3B232364BD0F0029E95D /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C3B222364BD0F0029E95D /* SelfSizedTableView.swift */; };
 		11A4529122E982D200439C70 /* CreateTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A4528F22E982D200439C70 /* CreateTopicsViewController.swift */; };
 		11A4529222E982D200439C70 /* CreateTopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A4529022E982D200439C70 /* CreateTopicsViewController.xib */; };
 		11A4529422E9830D00439C70 /* CreateTopisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A4529322E9830D00439C70 /* CreateTopisViewModel.swift */; };
@@ -122,6 +123,7 @@
 		1195AD732357EE710056E58F /* SFProDisplay-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-UltraLight.ttf"; sourceTree = "<group>"; };
 		1195AD742357EE720056E58F /* SFProDisplay-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Black.ttf"; sourceTree = "<group>"; };
 		1195AD752357EE720056E58F /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		119C3B222364BD0F0029E95D /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		11A4528F22E982D200439C70 /* CreateTopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTopicsViewController.swift; sourceTree = "<group>"; };
 		11A4529022E982D200439C70 /* CreateTopicsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateTopicsViewController.xib; sourceTree = "<group>"; };
 		11A4529322E9830D00439C70 /* CreateTopisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTopisViewModel.swift; sourceTree = "<group>"; };
@@ -479,7 +481,6 @@
 			isa = PBXGroup;
 			children = (
 				742A18C222DE6932004C544D /* Repositories */,
-				742A18BA22DE57FC004C544D /* Remote */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -507,6 +508,7 @@
 				11DAA7D422E82A3800EE1238 /* UpdateSingleTopicRequest.swift */,
 				11BAFEC022EB3EB1004C026E /* ListUsersRequest.swift */,
 				11D43F6922EC432C0053933A /* SendNewMessagePrivateRequest.swift */,
+				742A18BA22DE57FC004C544D /* Remote */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -551,6 +553,7 @@
 				742A18CF22DE789D004C544D /* UITableViewCellExten.swift */,
 				1121CC2623357EF300411A17 /* MinimTimeData.swift */,
 				11BA6924233754530035A1F3 /* CheckInternet.swift */,
+				119C3B222364BD0F0029E95D /* SelfSizedTableView.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				11BAFEB822EB3606004C026E /* UsersRouter.swift in Sources */,
 				742A18BC22DE581F004C544D /* APIRequest.swift in Sources */,
 				11E55FB522E2606E008FD871 /* ListCategoriesResponse.swift in Sources */,
+				119C3B232364BD0F0029E95D /* SelfSizedTableView.swift in Sources */,
 				11BAFEC122EB3EB1004C026E /* ListUsersRequest.swift in Sources */,
 				742A18DF22DE8526004C544D /* CreateTopicRequest.swift in Sources */,
 				118EF0ED22E36A9E00F57FA2 /* ListPostsByTopicRequest.swift in Sources */,

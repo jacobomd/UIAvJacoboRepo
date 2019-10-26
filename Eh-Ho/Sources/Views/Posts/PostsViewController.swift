@@ -8,10 +8,12 @@
 
 import UIKit
 
+
 class PostsViewController: UIViewController {
 
-    @IBOutlet weak var tableViewPosts: UITableView!
+    @IBOutlet weak var tableViewPosts: SelfSizedTableView!
     @IBOutlet weak var titleTopic: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var posts : [Post2] = []
     var postsCD : [PostData] = []
@@ -52,28 +54,25 @@ class PostsViewController: UIViewController {
     }
     
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
 
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewPosts.dataSource = self
+
         tableViewPosts.delegate = self
-        tableViewPosts.rowHeight = 60
         self.title = "Posts"
         
         tableViewPosts.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
         
         viewModel.viewDidLoad()
         
-        tableViewPosts.refreshControl = refreshControl
+        tableViewPosts.maxHeight = scrollView.frame.height+20
         
-
+        tableViewPosts.refreshControl = refreshControl
     }
-
     
+
      //Mark: - UI
     func setupUI(editable: Bool) {
 
@@ -125,18 +124,15 @@ class PostsViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func ButtonAddPost(_ sender: Any) {
-        
+    @IBAction func buttonAddPost(_ sender: Any) {
         viewModel.didTapInTopic(id: self.id)
     }
 
 }
 
 extension PostsViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.size.height
-    }
+
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if connection {
@@ -153,7 +149,12 @@ extension PostsViewController: UITableViewDataSource {
         
         
         if connection {
-            cell.textLabel?.text = posts[indexPath.row].cooked
+            
+            var resultado = posts[indexPath.row].cooked
+            resultado = resultado.replacingOccurrences(of: "<p>", with: "", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
+            resultado = resultado.replacingOccurrences(of: "</p>", with: "", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
+
+            cell.textLabel?.text = resultado
             id = posts[indexPath.row].topicID
             editable_topic  = posts[indexPath.row].canEdit
             var titulo = posts[indexPath.row].topicSlug
@@ -168,7 +169,6 @@ extension PostsViewController: UITableViewDataSource {
         }
         
         setupUI(editable: editable_topic)
-        
         return cell
     }
     

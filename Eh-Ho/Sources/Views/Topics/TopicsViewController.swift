@@ -53,7 +53,7 @@ class TopicsViewController: UIViewController {
     
     init(topicsViewModel: TopicsViewModel) {
         self.viewModel = topicsViewModel
-        
+
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -79,6 +79,8 @@ class TopicsViewController: UIViewController {
 
     }
     
+
+    
     private func setUI() {
         let backItem = UIBarButtonItem()
         backItem.title = "Volver"
@@ -89,7 +91,7 @@ class TopicsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //createView()
+        createView()
     }
     
     
@@ -183,7 +185,7 @@ extension TopicsViewController: UITableViewDataSource {
           
              viewModel.fetchSingleTopic(id: idTopics)
             
-//            let prueba = singleTopic?.details.createdBy.avatarTemplate
+//            let prueba = singleTopic.details.createdBy.avatarTemplate
 //            print("el avatar dentro de la tableview es \(prueba)")
         
             let dateTopicFormater = convertDateFormater(date: dateTopic)
