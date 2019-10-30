@@ -15,8 +15,12 @@
 		1121CC3123369B7B00411A17 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121CC3023369B7B00411A17 /* PostData.swift */; };
 		1121CC3323369BAE00411A17 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121CC3223369BAE00411A17 /* UserData.swift */; };
 		113BFD4A22E26650003D3CA8 /* ListCategoriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113BFD4922E26650003D3CA8 /* ListCategoriesRequest.swift */; };
+		116A57AC236571CE00359318 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A57AA236571CE00359318 /* PostCell.swift */; };
+		116A57AD236571CE00359318 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116A57AB236571CE00359318 /* PostCell.xib */; };
 		117045BD235E38E400536995 /* SingleTopicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117045BC235E38E400536995 /* SingleTopicResponse.swift */; };
 		117045BF235E3C8900536995 /* SingleTopicResponse2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117045BE235E3C8900536995 /* SingleTopicResponse2.swift */; };
+		118C144B23674F6A000806BA /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118C144923674F6A000806BA /* UserCell.swift */; };
+		118C144C23674F6A000806BA /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118C144A23674F6A000806BA /* UserCell.xib */; };
 		118EF0E222E311AF00F57FA2 /* ListTopicsByCategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EF0E122E311AF00F57FA2 /* ListTopicsByCategoryResponse.swift */; };
 		118EF0E422E312F300F57FA2 /* ListTopicsByCategoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EF0E322E312F300F57FA2 /* ListTopicsByCategoryRequest.swift */; };
 		118EF0E822E34D7100F57FA2 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EF0E622E34D7100F57FA2 /* TopicCell.swift */; };
@@ -107,8 +111,12 @@
 		1121CC3023369B7B00411A17 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		1121CC3223369BAE00411A17 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		113BFD4922E26650003D3CA8 /* ListCategoriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategoriesRequest.swift; sourceTree = "<group>"; };
+		116A57AA236571CE00359318 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		116A57AB236571CE00359318 /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		117045BC235E38E400536995 /* SingleTopicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTopicResponse.swift; sourceTree = "<group>"; };
 		117045BE235E3C8900536995 /* SingleTopicResponse2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTopicResponse2.swift; sourceTree = "<group>"; };
+		118C144923674F6A000806BA /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		118C144A23674F6A000806BA /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		118EF0E122E311AF00F57FA2 /* ListTopicsByCategoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTopicsByCategoryResponse.swift; sourceTree = "<group>"; };
 		118EF0E322E312F300F57FA2 /* ListTopicsByCategoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTopicsByCategoryRequest.swift; sourceTree = "<group>"; };
 		118EF0E622E34D7100F57FA2 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
@@ -206,6 +214,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		116A57AE236571DE00359318 /* PostCell */ = {
+			isa = PBXGroup;
+			children = (
+				116A57AA236571CE00359318 /* PostCell.swift */,
+				116A57AB236571CE00359318 /* PostCell.xib */,
+			);
+			path = PostCell;
+			sourceTree = "<group>";
+		};
+		118C144823674F36000806BA /* UserCell */ = {
+			isa = PBXGroup;
+			children = (
+				118C144923674F6A000806BA /* UserCell.swift */,
+				118C144A23674F6A000806BA /* UserCell.xib */,
+			);
+			path = UserCell;
+			sourceTree = "<group>";
+		};
 		118EF0E522E34CE900F57FA2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +244,8 @@
 		118EF0F222E36E5F00F57FA2 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
+				118C144823674F36000806BA /* UserCell */,
+				116A57AE236571DE00359318 /* PostCell */,
 				118EF0F322E36F0200F57FA2 /* PostsViewController.swift */,
 				118EF0F422E36F0200F57FA2 /* PostsViewController.xib */,
 				118EF0F722E36F2900F57FA2 /* PostRouter.swift */,
@@ -643,6 +671,7 @@
 				742A18A122DE530B004C544D /* Assets.xcassets in Resources */,
 				11E55FAB22E23163008FD871 /* CategoriesViewController.xib in Resources */,
 				11A4529222E982D200439C70 /* CreateTopicsViewController.xib in Resources */,
+				116A57AD236571CE00359318 /* PostCell.xib in Resources */,
 				11BAFEBD22EB367A004C026E /* UsersTableViewCell.xib in Resources */,
 				742A18B822DE5540004C544D /* TopicsViewController.xib in Resources */,
 				11BAFEB422EB35E8004C026E /* UsersViewController.xib in Resources */,
@@ -650,6 +679,7 @@
 				742A18D522DE7C47004C544D /* DetailTopicViewController.xib in Resources */,
 				11C03B132357859700C5ED3D /* PantallaInicialViewController.xib in Resources */,
 				118EF0F622E36F0200F57FA2 /* PostsViewController.xib in Resources */,
+				118C144C23674F6A000806BA /* UserCell.xib in Resources */,
 				11B3D2A922E580D400F81497 /* PostCreateViewController.xib in Resources */,
 				1195AD772357EE720056E58F /* SFProDisplay-Black.ttf in Resources */,
 				1195AD782357EE720056E58F /* SFProDisplay-Bold.ttf in Resources */,
@@ -711,6 +741,7 @@
 				742A189A22DE5309004C544D /* AppDelegate.swift in Sources */,
 				742A18C422DE694E004C544D /* TopicsRepository.swift in Sources */,
 				742A18D422DE7C47004C544D /* DetailTopicViewController.swift in Sources */,
+				116A57AC236571CE00359318 /* PostCell.swift in Sources */,
 				118EF0F122E36BF700F57FA2 /* PostRepositoryImpl.swift in Sources */,
 				11BAFEB322EB35E8004C026E /* UsersViewController.swift in Sources */,
 				11BAFEC522EB402D004C026E /* UsersRepositoryImpl.swift in Sources */,
@@ -736,6 +767,7 @@
 				11BAFEC322EB4015004C026E /* UsersRepository.swift in Sources */,
 				742A18C622DE6999004C544D /* TopicsRepositoryImpl.swift in Sources */,
 				117045BD235E38E400536995 /* SingleTopicResponse.swift in Sources */,
+				118C144B23674F6A000806BA /* UserCell.swift in Sources */,
 				117045BF235E3C8900536995 /* SingleTopicResponse2.swift in Sources */,
 				1121CC3323369BAE00411A17 /* UserData.swift in Sources */,
 				742A18D722DE7C65004C544D /* DetailTopicViewModel.swift in Sources */,

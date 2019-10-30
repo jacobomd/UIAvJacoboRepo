@@ -19,16 +19,19 @@ class PostViewModel {
     let id: Int
     let postsRepository: PostsRepository
     let topicRepository: TopicsRepository
+    let usersRepository: UsersRepository
     
-    init(router: PostRouter, id: Int, postsRepository: PostsRepository, topicRepository: TopicsRepository) {
+    init(router: PostRouter, id: Int, postsRepository: PostsRepository, topicRepository: TopicsRepository, usersRepository: UsersRepository) {
         self.router = router
         self.id = id
         self.postsRepository = postsRepository
         self.topicRepository = topicRepository
+        self.usersRepository = usersRepository
     }
     
     func viewDidLoad() {
         fetchListPostssByTopic()
+        fetchListUsers()
         
     }
     
@@ -70,6 +73,25 @@ class PostViewModel {
                 self?.view?.showError(with: "Error")
                 print("no ha se ha actualizado el topic")
             }
+        }
+        
+    }
+    
+    private func fetchListUsers() {
+      
+        if CheckInternet.Connection() {
+            usersRepository.getListUsers { [weak self] result  in
+                switch result {
+                case .success(let value):
+                    self?.view?.showListUsers(users: value.users)
+                    // self?.mDataManagerUsers.saveUsers(user: value.users)
+                    //self?.mDataManagerUsers.saveLastDownload()
+                case .failure:
+                    self?.view?.showError(with: "Error")
+                }
+            }
+        } else {
+            //self.view?.showListUsersCD(users: mDataManagerUsers.dataUsers())
         }
         
     }

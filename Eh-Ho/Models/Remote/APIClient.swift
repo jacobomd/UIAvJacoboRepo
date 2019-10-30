@@ -30,7 +30,7 @@ final class SessionAPI {
                     }
                 }
             } catch _ {
-                //print( String(data: data!, encoding: String.Encoding.utf8))
+                print( String(data: data!, encoding: String.Encoding.utf8))
             }
         }
         task.resume()

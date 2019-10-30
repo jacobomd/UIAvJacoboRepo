@@ -38,7 +38,7 @@ class UsersViewModel {
             switch result {
             case .success(let value):
                 self?.view?.showListUsers(users: value.users)
-                self?.mDataManagerUsers.saveUsers(user: value.users)
+               // self?.mDataManagerUsers.saveUsers(user: value.users)
                 self?.mDataManagerUsers.saveLastDownload()
             case .failure:
                 self?.view?.showError(with: "Error")

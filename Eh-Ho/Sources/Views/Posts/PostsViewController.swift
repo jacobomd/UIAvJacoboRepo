@@ -14,10 +14,12 @@ class PostsViewController: UIViewController {
     @IBOutlet weak var tableViewPosts: SelfSizedTableView!
     @IBOutlet weak var titleTopic: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var posts : [Post2] = []
     var postsCD : [PostData] = []
     var connection : Bool = true
+    var users: [User4] = []
     
     let viewModel : PostViewModel
     
@@ -58,16 +60,27 @@ class PostsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        
+        tableViewPosts.rowHeight = UITableView.automaticDimension
+        tableViewPosts.estimatedRowHeight = PostCell.estimateRowHeight()
         tableViewPosts.dataSource = self
-
         tableViewPosts.delegate = self
+        collectionView.dataSource = self
+        collectionView.delegate = self
+
         self.title = "Posts"
         
-        tableViewPosts.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
+        let cell = UINib(nibName: "PostCell", bundle: nil)
+        tableViewPosts.register(cell, forCellReuseIdentifier: UITableViewCell.identifier)
+        
+        let cellCollectioView = UINib(nibName: "UserCell", bundle: nil)
+        collectionView.register(cellCollectioView, forCellWithReuseIdentifier: "UserCell")
         
         viewModel.viewDidLoad()
         
         tableViewPosts.maxHeight = scrollView.frame.height+20
+        //tableViewPosts.maxHeight = 100
         
         tableViewPosts.refreshControl = refreshControl
     }
@@ -130,8 +143,29 @@ class PostsViewController: UIViewController {
 
 }
 
+private func convertDateFormater(date: String) -> String {
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+    
+    guard let date = dateFormatter.date(from: date) else {
+        assert(false, "no date from string")
+        
+    }
+    
+    dateFormatter.dateFormat = " MMM dd "
+    dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+    let timeStamp = dateFormatter.string(from: date)
+    return timeStamp
+    
+}
+
 extension PostsViewController: UITableViewDataSource {
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -144,9 +178,9 @@ extension PostsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableViewPosts.dequeueReusableCell(withIdentifier: UITableViewCell.identifier, for: indexPath)
-        
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identifier, for: indexPath) as? PostCell
+            else { return UITableViewCell()
+        }
         
         if connection {
             
@@ -154,13 +188,26 @@ extension PostsViewController: UITableViewDataSource {
             resultado = resultado.replacingOccurrences(of: "<p>", with: "", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
             resultado = resultado.replacingOccurrences(of: "</p>", with: "", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
 
-            cell.textLabel?.text = resultado
+           // cell.textLabel?.text = resultado
             id = posts[indexPath.row].topicID
             editable_topic  = posts[indexPath.row].canEdit
             var titulo = posts[indexPath.row].topicSlug
             
             titulo = titulo.replacingOccurrences(of: "-", with: " ", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
             titleTopic.text = titulo
+            
+            let userName = posts[indexPath.row].username
+            let descripcion = resultado
+            //let avatar = posts[indexPath.row].avatarTemplate
+            //let avatarImage = UIImage(named: "https://mdiscourse.keepcoding.io/\(avatar)")
+            let avatarImage = UIImage(named: "cell_iconoPrueba")
+
+            let numberVisit = posts[indexPath.row].postNumber
+            let date = posts[indexPath.row].createdAt
+            
+           let dateUpDate =  convertDateFormater(date: date)
+            
+            cell.configure(avatarImage: avatarImage!, userName: userName,descripcion: descripcion, numberVisit: "\(numberVisit)", date: dateUpDate)
       
         } else {
             cell.textLabel?.text = postsCD[indexPath.row].cooked
@@ -179,15 +226,61 @@ extension PostsViewController: UITableViewDelegate {
     
 }
 
+extension PostsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 64, height: 70)
+    }
+}
+
+
+
+extension PostsViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return users.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.backgroundColor = .black
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as? UserCell else {
+           return UICollectionViewCell()
+        }
+        
+        let image = UIImage(named: "cell_iconoPrueba")
+        let name = users[indexPath.row].username
+        
+        cell.configure(cellImage: image!, cellName: name)
+        cell.backgroundColor = .black
+        
+        return cell
+    }
+    
+    
+}
+
+extension PostsViewController: UICollectionViewDelegate {
+    
+}
+
 // MARK: - ViewModel Communication
 
 protocol PostsViewControllerProtocol: class {
     func showListPostssByTopic(posts: [Post2])
     func showError(with message: String)
     func showListPostsCD(post: [PostData])
+    func showListUsers(users: [User4])
 }
 
 extension PostsViewController: PostsViewControllerProtocol {
+    func showListUsers(users: [User4]) {
+        self.users = users
+        self.collectionView.reloadData()
+    }
+    
 
 
     func showListPostssByTopic(posts: [Post2]) {

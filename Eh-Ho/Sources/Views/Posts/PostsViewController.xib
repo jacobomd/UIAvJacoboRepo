@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostsViewController" customModule="Eh_Ho" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="CIw-6L-Llu" id="HqD-jR-76o"/>
                 <outlet property="scrollView" destination="nz0-Bw-1U2" id="reQ-6c-zd5"/>
                 <outlet property="tableViewPosts" destination="bys-WB-8ww" id="fbV-nZ-sFU"/>
                 <outlet property="titleTopic" destination="PCy-WV-UBl" id="C7m-XT-hfu"/>
@@ -113,6 +114,22 @@
                                         <constraint firstAttribute="height" constant="325" id="Se4-tk-Yqt"/>
                                     </constraints>
                                 </imageView>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="CIw-6L-Llu">
+                                    <rect key="frame" x="8" y="269.5" width="406" height="70"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="70" id="NDu-4a-CuH"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Haf-eG-Uaj">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="MBx-Wr-Htq"/>
+                                        <outlet property="delegate" destination="-1" id="h8B-Hi-4Db"/>
+                                    </connections>
+                                </collectionView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p3-5c-L8W">
                                     <rect key="frame" x="60" y="179.5" width="65" height="65"/>
                                     <state key="normal" image="detailTopicButtMens"/>
@@ -143,18 +160,21 @@
                                 <constraint firstAttribute="trailing" secondItem="Btl-St-599" secondAttribute="trailing" id="5ot-aj-GRT"/>
                                 <constraint firstItem="94N-z5-hfz" firstAttribute="top" secondItem="PCy-WV-UBl" secondAttribute="bottom" constant="10" id="6Ua-AP-TL8"/>
                                 <constraint firstItem="QkH-bX-0xj" firstAttribute="top" secondItem="bys-WB-8ww" secondAttribute="bottom" constant="30" id="6dc-YX-soF"/>
+                                <constraint firstAttribute="trailing" secondItem="CIw-6L-Llu" secondAttribute="trailing" id="Ifm-19-YH8"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="94N-z5-hfz" secondAttribute="trailing" constant="20" id="KO8-E7-H0q"/>
                                 <constraint firstItem="94N-z5-hfz" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" constant="20" id="Me8-At-bVq"/>
                                 <constraint firstItem="PCy-WV-UBl" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" constant="20" id="OJK-hh-01g"/>
                                 <constraint firstItem="6p3-5c-L8W" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" constant="60" id="QfB-OZ-RXb"/>
                                 <constraint firstItem="Imb-Ol-jWn" firstAttribute="centerX" secondItem="aEr-ek-4of" secondAttribute="centerX" id="R93-Eu-EF7"/>
                                 <constraint firstItem="6p3-5c-L8W" firstAttribute="top" secondItem="bys-WB-8ww" secondAttribute="bottom" id="UKR-43-U10"/>
+                                <constraint firstItem="CIw-6L-Llu" firstAttribute="top" secondItem="6p3-5c-L8W" secondAttribute="bottom" constant="25" id="Zws-nM-szt"/>
                                 <constraint firstAttribute="trailing" secondItem="PCy-WV-UBl" secondAttribute="trailing" constant="20" id="bBA-pb-O2r"/>
                                 <constraint firstItem="QmN-1V-EJJ" firstAttribute="top" secondItem="bys-WB-8ww" secondAttribute="bottom" id="big-Kk-Dxg"/>
                                 <constraint firstAttribute="trailing" secondItem="QmN-1V-EJJ" secondAttribute="trailing" constant="60" id="hur-Cj-wMd"/>
                                 <constraint firstItem="Btl-St-599" firstAttribute="top" secondItem="QkH-bX-0xj" secondAttribute="bottom" id="hxJ-Lv-evc"/>
                                 <constraint firstItem="bys-WB-8ww" firstAttribute="top" secondItem="94N-z5-hfz" secondAttribute="bottom" constant="10" id="jPv-dk-bez"/>
                                 <constraint firstItem="PCy-WV-UBl" firstAttribute="top" secondItem="aEr-ek-4of" secondAttribute="top" constant="10" id="qCc-bS-KHL"/>
+                                <constraint firstItem="CIw-6L-Llu" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" constant="8" id="tmQ-bD-MRh"/>
                                 <constraint firstItem="bys-WB-8ww" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" id="wyG-Ve-cAc"/>
                                 <constraint firstItem="Imb-Ol-jWn" firstAttribute="top" secondItem="bys-WB-8ww" secondAttribute="bottom" id="zXR-ue-Ks0"/>
                             </constraints>
