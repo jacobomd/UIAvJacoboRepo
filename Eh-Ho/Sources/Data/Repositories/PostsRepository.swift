@@ -11,4 +11,5 @@ import Foundation
 protocol PostsRepository {
     func getListPostssByTopic(id: Int, completion: @escaping(Result<ListPostsByTopicResponse, Error>) -> ())
     func createNewPost(id_topic: Int, raw: String, completion: @escaping(Result<AddNewPostResponse, Error>) -> ())
+    func getListTopTopics(completion: @escaping (Result<ListTopTopicsResponse, Error>) -> ())
 }

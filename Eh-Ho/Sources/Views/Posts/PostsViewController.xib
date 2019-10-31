@@ -16,6 +16,7 @@
                 <outlet property="scrollView" destination="nz0-Bw-1U2" id="reQ-6c-zd5"/>
                 <outlet property="tableViewPosts" destination="bys-WB-8ww" id="fbV-nZ-sFU"/>
                 <outlet property="titleTopic" destination="PCy-WV-UBl" id="C7m-XT-hfu"/>
+                <outlet property="topTopic" destination="cLB-uP-Tml" id="v8I-N4-iAV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -141,27 +142,81 @@
                                     <rect key="frame" x="289" y="179.5" width="65" height="65"/>
                                     <state key="normal" image="detailTopicButtShar"/>
                                 </button>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Btl-St-599" customClass="SelfSizedTableView" customModule="Eh_Ho" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="534.5" width="414" height="273.5"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </tableView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Imb-Ol-jWn">
                                     <rect key="frame" x="174.5" y="179.5" width="65" height="65"/>
                                     <state key="normal" image="detailTopicButtLik"/>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1u-Pp-EC9" userLabel="Label sugeride topic">
+                                    <rect key="frame" x="16" y="550.5" width="181.5" height="28"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="Suggested topics">
+                                            <attributes>
+                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <font key="NSFont" size="22" name="SFProDisplay-Bold"/>
+                                                <real key="NSKern" value="0.34999999999999998"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="28" maximumLineHeight="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="28">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="56">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="84">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="112">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="140">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="168">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="196">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="224">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="252">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="280">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="308">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="336">
+                                                            <options/>
+                                                        </textTab>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cLB-uP-Tml" customClass="SelfSizedTableView" customModule="Eh_Ho" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="589.5" width="414" height="218.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tableView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="cLB-uP-Tml" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" id="263-iU-OV1"/>
                                 <constraint firstAttribute="trailing" secondItem="bys-WB-8ww" secondAttribute="trailing" id="2LU-RD-gql"/>
                                 <constraint firstItem="QkH-bX-0xj" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" id="2eg-ut-8de"/>
-                                <constraint firstItem="Btl-St-599" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" id="3GF-si-QCx"/>
-                                <constraint firstAttribute="bottom" secondItem="Btl-St-599" secondAttribute="bottom" id="3Nf-Cv-vDU"/>
                                 <constraint firstAttribute="trailing" secondItem="QkH-bX-0xj" secondAttribute="trailing" id="3U1-Yk-G3C"/>
-                                <constraint firstAttribute="trailing" secondItem="Btl-St-599" secondAttribute="trailing" id="5ot-aj-GRT"/>
+                                <constraint firstItem="l1u-Pp-EC9" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" constant="16" id="3cl-QW-WK3"/>
                                 <constraint firstItem="94N-z5-hfz" firstAttribute="top" secondItem="PCy-WV-UBl" secondAttribute="bottom" constant="10" id="6Ua-AP-TL8"/>
                                 <constraint firstItem="QkH-bX-0xj" firstAttribute="top" secondItem="bys-WB-8ww" secondAttribute="bottom" constant="30" id="6dc-YX-soF"/>
+                                <constraint firstItem="cLB-uP-Tml" firstAttribute="top" secondItem="l1u-Pp-EC9" secondAttribute="bottom" constant="11" id="DCT-ce-p2F"/>
                                 <constraint firstAttribute="trailing" secondItem="CIw-6L-Llu" secondAttribute="trailing" id="Ifm-19-YH8"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="94N-z5-hfz" secondAttribute="trailing" constant="20" id="KO8-E7-H0q"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="l1u-Pp-EC9" secondAttribute="trailing" constant="80" id="MT3-T6-OQY"/>
                                 <constraint firstItem="94N-z5-hfz" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" constant="20" id="Me8-At-bVq"/>
                                 <constraint firstItem="PCy-WV-UBl" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" constant="20" id="OJK-hh-01g"/>
                                 <constraint firstItem="6p3-5c-L8W" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" constant="60" id="QfB-OZ-RXb"/>
@@ -170,11 +225,13 @@
                                 <constraint firstItem="CIw-6L-Llu" firstAttribute="top" secondItem="6p3-5c-L8W" secondAttribute="bottom" constant="25" id="Zws-nM-szt"/>
                                 <constraint firstAttribute="trailing" secondItem="PCy-WV-UBl" secondAttribute="trailing" constant="20" id="bBA-pb-O2r"/>
                                 <constraint firstItem="QmN-1V-EJJ" firstAttribute="top" secondItem="bys-WB-8ww" secondAttribute="bottom" id="big-Kk-Dxg"/>
+                                <constraint firstAttribute="bottom" secondItem="cLB-uP-Tml" secondAttribute="bottom" id="ggs-tE-jXm"/>
+                                <constraint firstAttribute="trailing" secondItem="cLB-uP-Tml" secondAttribute="trailing" id="hNU-bO-UcV"/>
                                 <constraint firstAttribute="trailing" secondItem="QmN-1V-EJJ" secondAttribute="trailing" constant="60" id="hur-Cj-wMd"/>
-                                <constraint firstItem="Btl-St-599" firstAttribute="top" secondItem="QkH-bX-0xj" secondAttribute="bottom" id="hxJ-Lv-evc"/>
                                 <constraint firstItem="bys-WB-8ww" firstAttribute="top" secondItem="94N-z5-hfz" secondAttribute="bottom" constant="10" id="jPv-dk-bez"/>
                                 <constraint firstItem="PCy-WV-UBl" firstAttribute="top" secondItem="aEr-ek-4of" secondAttribute="top" constant="10" id="qCc-bS-KHL"/>
                                 <constraint firstItem="CIw-6L-Llu" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" constant="8" id="tmQ-bD-MRh"/>
+                                <constraint firstItem="l1u-Pp-EC9" firstAttribute="top" secondItem="QkH-bX-0xj" secondAttribute="bottom" constant="16" id="wbt-WP-iLZ"/>
                                 <constraint firstItem="bys-WB-8ww" firstAttribute="leading" secondItem="aEr-ek-4of" secondAttribute="leading" id="wyG-Ve-cAc"/>
                                 <constraint firstItem="Imb-Ol-jWn" firstAttribute="top" secondItem="bys-WB-8ww" secondAttribute="bottom" id="zXR-ue-Ks0"/>
                             </constraints>

@@ -15,11 +15,15 @@ class PostsViewController: UIViewController {
     @IBOutlet weak var titleTopic: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var topTopic: SelfSizedTableView!
+    
+    
     
     var posts : [Post2] = []
     var postsCD : [PostData] = []
     var connection : Bool = true
     var users: [User4] = []
+    var topics: [TopTopic] = []
     
     let viewModel : PostViewModel
     
@@ -64,22 +68,33 @@ class PostsViewController: UIViewController {
         
         tableViewPosts.rowHeight = UITableView.automaticDimension
         tableViewPosts.estimatedRowHeight = PostCell.estimateRowHeight()
+        topTopic.rowHeight = UITableView.automaticDimension
+        topTopic.estimatedRowHeight = TopTopicCell.estimateRowHeight()
         tableViewPosts.dataSource = self
         tableViewPosts.delegate = self
+        let cellPost = UINib(nibName: "PostCell", bundle: nil)
+        tableViewPosts.register(cellPost, forCellReuseIdentifier: "PostCell")
+        
+        topTopic.dataSource = self
+        topTopic.delegate = self
+        let cellTopTopic = UINib(nibName: "TopTopicCell", bundle: nil)
+        topTopic.register(cellTopTopic, forCellReuseIdentifier: "TopTopicCell")
+
+
         collectionView.dataSource = self
         collectionView.delegate = self
-
-        self.title = "Posts"
-        
-        let cell = UINib(nibName: "PostCell", bundle: nil)
-        tableViewPosts.register(cell, forCellReuseIdentifier: UITableViewCell.identifier)
-        
         let cellCollectioView = UINib(nibName: "UserCell", bundle: nil)
         collectionView.register(cellCollectioView, forCellWithReuseIdentifier: "UserCell")
+    
+        self.title = "Posts"
+
+
         
         viewModel.viewDidLoad()
         
         tableViewPosts.maxHeight = scrollView.frame.height+20
+        topTopic.maxHeight = scrollView.frame.height+20
+        
         //tableViewPosts.maxHeight = 100
         
         tableViewPosts.refreshControl = refreshControl
@@ -164,59 +179,102 @@ private func convertDateFormater(date: String) -> String {
 extension PostsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        var count: CGFloat?
+        
+        if tableView == tableViewPosts {
+            count = 100
+        }
+        else {count = 100}
+        
+        return count!
     }
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if connection {
-            return posts.count
-        } else {
-            return postsCD.count
+        var count: Int?
+        
+        if tableView == tableViewPosts {
+            if connection {
+                count =  posts.count
+            } else {
+                count =  postsCD.count
+            }
+            
         }
+        if tableView == topTopic {
+            print("El contador es \(topics.count)")
+            count = topics.count
+        }
+        return count!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identifier, for: indexPath) as? PostCell
-            else { return UITableViewCell()
+        var cellFinal: UITableViewCell?
+        
+        if (tableView == self.tableViewPosts) {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostCell
+                else { return UITableViewCell()
+            }
+            
+            
+            if connection {
+                
+                var resultado = posts[indexPath.row].cooked
+                resultado = resultado.replacingOccurrences(of: "<p>", with: "", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
+                resultado = resultado.replacingOccurrences(of: "</p>", with: "", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
+                
+                // cell.textLabel?.text = resultado
+                id = posts[indexPath.row].topicID
+                editable_topic  = posts[indexPath.row].canEdit
+                var titulo = posts[indexPath.row].topicSlug
+                
+                titulo = titulo.replacingOccurrences(of: "-", with: " ", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
+                titleTopic.text = titulo
+                
+                let userName = posts[indexPath.row].username
+                let descripcion = resultado
+                //let avatar = posts[indexPath.row].avatarTemplate
+                //let avatarImage = UIImage(named: "https://mdiscourse.keepcoding.io/\(avatar)")
+                let avatarImage = UIImage(named: "cell_iconoPrueba")
+                
+                let numberVisit = posts[indexPath.row].postNumber
+                let date = posts[indexPath.row].createdAt
+                
+                let dateUpDate =  convertDateFormater(date: date)
+                
+                cell.configure(avatarImage: avatarImage!, userName: userName,descripcion: descripcion, numberVisit: "\(numberVisit)", date: dateUpDate)
+                
+            } else {
+                cell.textLabel?.text = postsCD[indexPath.row].cooked
+                id = postsCD[indexPath.row].topicId
+                editable_topic  = postsCD[indexPath.row].canEdit
+            }
+            setupUI(editable: editable_topic)
+            
+            cellFinal = cell
+            
+        }
+        if (tableView == self.topTopic) {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TopTopicCell", for: indexPath) as? TopTopicCell
+                else { return UITableViewCell()
+            }
+            
+            let titleTopic = topics[indexPath.row].title
+            let numberComments = topics[indexPath.row].postsCount
+            let numberVisites = topics[indexPath.row].views
+            let dateTopic = topics[indexPath.row].createdAt
+            
+            let dateUpDate =  convertDateFormater(date: dateTopic)
+            
+            cell.configure(titleTopic: "\(titleTopic)", numberComments: "\(numberComments)", numberVisites: "\(numberVisites)", dateTopic: "\(dateUpDate)")
+            
+            cellFinal = cell
         }
         
-        if connection {
-            
-            var resultado = posts[indexPath.row].cooked
-            resultado = resultado.replacingOccurrences(of: "<p>", with: "", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
-            resultado = resultado.replacingOccurrences(of: "</p>", with: "", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
-
-           // cell.textLabel?.text = resultado
-            id = posts[indexPath.row].topicID
-            editable_topic  = posts[indexPath.row].canEdit
-            var titulo = posts[indexPath.row].topicSlug
-            
-            titulo = titulo.replacingOccurrences(of: "-", with: " ", options: NSString.CompareOptions.literal, range: nil).capitalizingFirstLetter()
-            titleTopic.text = titulo
-            
-            let userName = posts[indexPath.row].username
-            let descripcion = resultado
-            //let avatar = posts[indexPath.row].avatarTemplate
-            //let avatarImage = UIImage(named: "https://mdiscourse.keepcoding.io/\(avatar)")
-            let avatarImage = UIImage(named: "cell_iconoPrueba")
-
-            let numberVisit = posts[indexPath.row].postNumber
-            let date = posts[indexPath.row].createdAt
-            
-           let dateUpDate =  convertDateFormater(date: date)
-            
-            cell.configure(avatarImage: avatarImage!, userName: userName,descripcion: descripcion, numberVisit: "\(numberVisit)", date: dateUpDate)
-      
-        } else {
-            cell.textLabel?.text = postsCD[indexPath.row].cooked
-            id = postsCD[indexPath.row].topicId
-            editable_topic  = postsCD[indexPath.row].canEdit
-        }
-        
-        setupUI(editable: editable_topic)
-        return cell
+        return cellFinal!
     }
     
 }
@@ -266,6 +324,9 @@ extension PostsViewController: UICollectionViewDelegate {
     
 }
 
+
+
+
 // MARK: - ViewModel Communication
 
 protocol PostsViewControllerProtocol: class {
@@ -273,9 +334,15 @@ protocol PostsViewControllerProtocol: class {
     func showError(with message: String)
     func showListPostsCD(post: [PostData])
     func showListUsers(users: [User4])
+    func showListTopTopic(topics: [TopTopic])
 }
 
 extension PostsViewController: PostsViewControllerProtocol {
+    func showListTopTopic(topics: [TopTopic]) {
+        self.topics = topics
+        self.topTopic.reloadData()
+    }
+    
     func showListUsers(users: [User4]) {
         self.users = users
         self.collectionView.reloadData()

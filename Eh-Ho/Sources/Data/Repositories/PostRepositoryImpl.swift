@@ -31,5 +31,12 @@ class PostRepositoryImpl: PostsRepository {
         }
     }
     
+    func getListTopTopics(completion: @escaping (Result<ListTopTopicsResponse, Error>) -> ()) {
+        let request = ListTopTopicsRequest()
+        session.send(request: request) { result in
+            completion(result)
+        }
+    }
+    
     
 }

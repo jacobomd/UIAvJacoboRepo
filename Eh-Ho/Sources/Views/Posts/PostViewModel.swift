@@ -32,6 +32,7 @@ class PostViewModel {
     func viewDidLoad() {
         fetchListPostssByTopic()
         fetchListUsers()
+        fetchListTopTopics()
         
     }
     
@@ -80,12 +81,33 @@ class PostViewModel {
     private func fetchListUsers() {
       
         if CheckInternet.Connection() {
-            usersRepository.getListUsers { [weak self] result  in
+            usersRepository.getListUsers() { [weak self] result  in
                 switch result {
                 case .success(let value):
                     self?.view?.showListUsers(users: value.users)
+
                     // self?.mDataManagerUsers.saveUsers(user: value.users)
                     //self?.mDataManagerUsers.saveLastDownload()
+                case .failure:
+                    self?.view?.showError(with: "Error")
+                }
+            }
+        } else {
+            //self.view?.showListUsersCD(users: mDataManagerUsers.dataUsers())
+        }
+        
+    }
+    
+    private func fetchListTopTopics() {
+        
+        if CheckInternet.Connection() {
+            postsRepository.getListTopTopics() { [weak self] result  in
+                switch result {
+                case .success(let value):
+                    
+                    let data = value.topicList.topics
+                    print("LOS DATOS DE DATA SON : \(data)")
+                    self?.view?.showListTopTopic(topics: value.topicList.topics)
                 case .failure:
                     self?.view?.showError(with: "Error")
                 }
