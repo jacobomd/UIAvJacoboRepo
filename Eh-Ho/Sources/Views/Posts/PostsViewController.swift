@@ -16,6 +16,14 @@ class PostsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var topTopic: SelfSizedTableView!
+    @IBOutlet weak var generalViewScrollView: UIView!
+    @IBOutlet weak var stackViewIconsTitle: UIStackView!
+    @IBOutlet weak var textRegistered: UIImageView!
+    
+    @IBOutlet weak var createPostButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var sugerideTopTopicTitle: UILabel!
     
     
     
@@ -98,6 +106,121 @@ class PostsViewController: UIViewController {
         //tableViewPosts.maxHeight = 100
         
         tableViewPosts.refreshControl = refreshControl
+      
+    }
+    
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //createView()
+    }
+    
+    
+    //MARK: - Constrains by code
+    
+    private func createView() {
+        
+      
+        scrollView.translatesAutoresizingMaskIntoConstraints = true
+        generalViewScrollView.translatesAutoresizingMaskIntoConstraints = true
+        titleTopic.translatesAutoresizingMaskIntoConstraints = true
+        stackViewIconsTitle.translatesAutoresizingMaskIntoConstraints = true
+        tableViewPosts.translatesAutoresizingMaskIntoConstraints = true
+        textRegistered.translatesAutoresizingMaskIntoConstraints = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = true
+        createPostButton.translatesAutoresizingMaskIntoConstraints = true
+        shareButton.translatesAutoresizingMaskIntoConstraints = true
+        likeButton.translatesAutoresizingMaskIntoConstraints = true
+        sugerideTopTopicTitle.translatesAutoresizingMaskIntoConstraints = true
+        topTopic.translatesAutoresizingMaskIntoConstraints = true
+        
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0.0),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0.0),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            generalViewScrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0),
+            generalViewScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0.0),
+            generalViewScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0),
+            generalViewScrollView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 0.0),
+            generalViewScrollView.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 0.0),
+            generalViewScrollView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.0)
+            
+            ])
+        
+        NSLayoutConstraint.activate([
+            titleTopic.topAnchor.constraint(equalTo: view.topAnchor, constant: 10.0),
+            titleTopic.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20.0),
+            titleTopic.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20.0),
+            titleTopic.bottomAnchor.constraint(equalTo: stackViewIconsTitle.topAnchor, constant: 10.0),
+            ])
+        
+        NSLayoutConstraint.activate([
+            stackViewIconsTitle.topAnchor.constraint(equalTo: titleTopic.bottomAnchor, constant: 10.0),
+            stackViewIconsTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20.0),
+            stackViewIconsTitle.trailingAnchor.constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: -20),
+            stackViewIconsTitle.bottomAnchor.constraint(equalTo: stackViewIconsTitle.topAnchor, constant: 10.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            tableViewPosts.topAnchor.constraint(equalTo: stackViewIconsTitle.bottomAnchor, constant: 10.0),
+            tableViewPosts.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0.0),
+            tableViewPosts.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0),
+            tableViewPosts.bottomAnchor.constraint(equalTo: textRegistered.topAnchor, constant: 30.0),
+            tableViewPosts.bottomAnchor.constraint(equalTo: createPostButton.topAnchor, constant: 0.0),
+            tableViewPosts.bottomAnchor.constraint(equalTo: shareButton.topAnchor, constant: 0.0),
+            tableViewPosts.bottomAnchor.constraint(equalTo: likeButton.topAnchor, constant: 0.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            textRegistered.topAnchor.constraint(equalTo: tableViewPosts.bottomAnchor, constant: 30.0),
+            textRegistered.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0.0),
+            textRegistered.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0),
+            textRegistered.bottomAnchor.constraint(equalTo: sugerideTopTopicTitle.topAnchor, constant: 16.0),
+            textRegistered.heightAnchor.constraint(equalToConstant: 325.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: createPostButton.bottomAnchor, constant: 25.0),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8.0),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0),
+            collectionView.heightAnchor.constraint(equalToConstant: 70.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            createPostButton.topAnchor.constraint(equalTo: tableViewPosts.bottomAnchor, constant: 0.0),
+            createPostButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60.0),
+            createPostButton.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 25.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            shareButton.topAnchor.constraint(equalTo: tableViewPosts.bottomAnchor, constant: 0.0),
+            shareButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+           likeButton.topAnchor.constraint(equalTo: tableViewPosts.bottomAnchor, constant: 0.0),
+            likeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
+        
+        NSLayoutConstraint.activate([
+            sugerideTopTopicTitle.topAnchor.constraint(equalTo: textRegistered.bottomAnchor, constant: 16.0),
+            sugerideTopTopicTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0),
+            sugerideTopTopicTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0),
+            sugerideTopTopicTitle.bottomAnchor.constraint(equalTo: topTopic.topAnchor, constant: 11.0)
+            ])
+        
+        NSLayoutConstraint.activate([
+            topTopic.topAnchor.constraint(equalTo: sugerideTopTopicTitle.bottomAnchor, constant: 11.0),
+            topTopic.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0.0),
+            topTopic.trailingAnchor.constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: -80.0),
+            topTopic.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0)
+            ])
+        
     }
     
 

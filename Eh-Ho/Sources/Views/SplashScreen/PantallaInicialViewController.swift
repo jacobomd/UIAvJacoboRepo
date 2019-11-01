@@ -61,7 +61,7 @@ class PantallaInicialViewController: UIViewController {
         
     }
     
-    
+    //MARK: - CONSTRAINS BY CODE
     private func createView() {
         
         logo_Rectangulo.translatesAutoresizingMaskIntoConstraints = false

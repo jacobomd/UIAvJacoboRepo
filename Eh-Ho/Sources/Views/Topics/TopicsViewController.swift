@@ -91,7 +91,7 @@ class TopicsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        createView()
+        //createView()
     }
     
     
