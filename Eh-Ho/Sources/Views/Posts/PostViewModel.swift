@@ -10,17 +10,16 @@ import Foundation
 
 class PostViewModel {
     
+    //MARK: - Propierties
     weak var  view: PostsViewControllerProtocol?
-    
     private let mDataManagerPost = DataManager()
-
-    
     let router: PostRouter
     let id: Int
     let postsRepository: PostsRepository
     let topicRepository: TopicsRepository
     let usersRepository: UsersRepository
     
+    //MARK: - Inits
     init(router: PostRouter, id: Int, postsRepository: PostsRepository, topicRepository: TopicsRepository, usersRepository: UsersRepository) {
         self.router = router
         self.id = id
@@ -29,6 +28,7 @@ class PostViewModel {
         self.usersRepository = usersRepository
     }
     
+    //MARK: - Cycle life
     func viewDidLoad() {
         fetchListPostssByTopic()
         fetchListUsers()
@@ -36,6 +36,7 @@ class PostViewModel {
         
     }
     
+    //MARK: Navigations
     func didTapInTopic(id: Int) {
         router.navigateToPosts(id: id)
     }
@@ -44,7 +45,7 @@ class PostViewModel {
         updateSingleTopic(title: title)
     }
     
-    
+    //MARK: - Private functions
     private func fetchListPostssByTopic () {
         if CheckInternet.Connection() {
             postsRepository.getListPostssByTopic(id: id) { [weak self] result in
@@ -79,15 +80,14 @@ class PostViewModel {
     }
     
     private func fetchListUsers() {
-      
+        
         if CheckInternet.Connection() {
             usersRepository.getListUsers() { [weak self] result  in
                 switch result {
                 case .success(let value):
                     self?.view?.showListUsers(users: value.users)
-
                     // self?.mDataManagerUsers.saveUsers(user: value.users)
-                    //self?.mDataManagerUsers.saveLastDownload()
+                //self?.mDataManagerUsers.saveLastDownload()
                 case .failure:
                     self?.view?.showError(with: "Error")
                 }
@@ -115,7 +115,6 @@ class PostViewModel {
         } else {
             //self.view?.showListUsersCD(users: mDataManagerUsers.dataUsers())
         }
-        
     }
     
 }

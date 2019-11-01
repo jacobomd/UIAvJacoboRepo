@@ -11,6 +11,7 @@ import UIKit
 
 class PostsViewController: UIViewController {
 
+    //MARK: - Outlets
     @IBOutlet weak var tableViewPosts: SelfSizedTableView!
     @IBOutlet weak var titleTopic: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -19,26 +20,34 @@ class PostsViewController: UIViewController {
     @IBOutlet weak var generalViewScrollView: UIView!
     @IBOutlet weak var stackViewIconsTitle: UIStackView!
     @IBOutlet weak var textRegistered: UIImageView!
-    
     @IBOutlet weak var createPostButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var sugerideTopTopicTitle: UILabel!
     
-    
-    
+    //MARK: - Propierties
     var posts : [Post2] = []
     var postsCD : [PostData] = []
     var connection : Bool = true
     var users: [User4] = []
     var topics: [TopTopic] = []
-    
     let viewModel : PostViewModel
-    
     var id: Int = 0
     var newTitle: String = ""
     var editable_topic: Bool = false
     
+
+    //MARK: - Inits
+    init(viewModel : PostViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - RefreshControl
     lazy var refreshControl:UIRefreshControl = {
         let refresControl = UIRefreshControl()
         //QUE AL CAMBIAR EL VALOR, SE EJECUTE UN MÉTODO
@@ -58,22 +67,10 @@ class PostsViewController: UIViewController {
         
     }
     
-    init(viewModel : PostViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-
-
-    
+    //MARK: - Cycle life
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        
         tableViewPosts.rowHeight = UITableView.automaticDimension
         tableViewPosts.estimatedRowHeight = PostCell.estimateRowHeight()
         topTopic.rowHeight = UITableView.automaticDimension
@@ -95,16 +92,11 @@ class PostsViewController: UIViewController {
         collectionView.register(cellCollectioView, forCellWithReuseIdentifier: "UserCell")
     
         self.title = "Posts"
-
-
-        
         viewModel.viewDidLoad()
         
         tableViewPosts.maxHeight = scrollView.frame.height+20
         topTopic.maxHeight = scrollView.frame.height+20
-        
-        //tableViewPosts.maxHeight = 100
-        
+    
         tableViewPosts.refreshControl = refreshControl
       
     }
@@ -117,10 +109,8 @@ class PostsViewController: UIViewController {
     
     
     //MARK: - Constrains by code
-    
     private func createView() {
         
-      
         scrollView.translatesAutoresizingMaskIntoConstraints = true
         generalViewScrollView.translatesAutoresizingMaskIntoConstraints = true
         titleTopic.translatesAutoresizingMaskIntoConstraints = true
@@ -255,6 +245,7 @@ class PostsViewController: UIViewController {
        showPustTopicAlert()
     }
     
+    //MARK: - Private functions
     private func showPustTopicAlert()  {
         //Create the alert
         let alert = UIAlertController(title: "Editar topic", message: nil, preferredStyle: .alert)
@@ -278,27 +269,28 @@ class PostsViewController: UIViewController {
     @IBAction func buttonAddPost(_ sender: Any) {
         viewModel.didTapInTopic(id: self.id)
     }
-
-}
-
-private func convertDateFormater(date: String) -> String {
     
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-    dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
-    
-    guard let date = dateFormatter.date(from: date) else {
-        assert(false, "no date from string")
+    private func convertDateFormater(date: String) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        
+        guard let date = dateFormatter.date(from: date) else {
+            assert(false, "no date from string")
+            
+        }
+        
+        dateFormatter.dateFormat = " MMM dd "
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        let timeStamp = dateFormatter.string(from: date)
+        return timeStamp
         
     }
-    
-    dateFormatter.dateFormat = " MMM dd "
-    dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
-    let timeStamp = dateFormatter.string(from: date)
-    return timeStamp
-    
+
 }
 
+//MARK: - Extensions
 extension PostsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -439,19 +431,24 @@ extension PostsViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-    
+
 }
 
 extension PostsViewController: UICollectionViewDelegate {
     
 }
 
-
-
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
 
 // MARK: - ViewModel Communication
-
 protocol PostsViewControllerProtocol: class {
     func showListPostssByTopic(posts: [Post2])
     func showError(with message: String)
@@ -489,12 +486,4 @@ extension PostsViewController: PostsViewControllerProtocol {
     }
 }
 
-extension String {
-    func capitalizingFirstLetter() -> String {
-        return prefix(1).uppercased() + self.lowercased().dropFirst()
-    }
-    
-    mutating func capitalizeFirstLetter() {
-        self = self.capitalizingFirstLetter()
-    }
-}
+

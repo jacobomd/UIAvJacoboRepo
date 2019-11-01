@@ -59,7 +59,7 @@
                         <action selector="buttonAddTopicBig:" destination="-1" eventType="touchUpInside" id="reP-sY-Twm"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temas_TextDescrip" translatesAutoresizingMaskIntoConstraints="NO" id="Ab5-zB-fLt">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temas_TextDescrip" translatesAutoresizingMaskIntoConstraints="NO" id="Ab5-zB-fLt" customClass="CustomView" customModule="Eh_Ho" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="160.66666666666666" width="414" height="150.99999999999997"/>
                 </imageView>
             </subviews>

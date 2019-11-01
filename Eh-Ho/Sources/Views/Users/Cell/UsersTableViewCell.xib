@@ -39,7 +39,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjP-Fl-84A">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjP-Fl-84A" customClass="CustomButton" customModule="Eh_Ho" customModuleProvider="target">
                                 <rect key="frame" x="165" y="25" width="155" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="enviar mensaje">
@@ -60,6 +60,7 @@
             <connections>
                 <outlet property="labelName" destination="Zak-wY-uvl" id="hbT-9q-IfL"/>
                 <outlet property="labelUserName" destination="wLb-pR-e0r" id="ttc-jk-geM"/>
+                <outlet property="messageButton" destination="bjP-Fl-84A" id="DLW-AO-nFf"/>
             </connections>
             <point key="canvasLocation" x="34.782608695652179" y="24.776785714285712"/>
         </tableViewCell>

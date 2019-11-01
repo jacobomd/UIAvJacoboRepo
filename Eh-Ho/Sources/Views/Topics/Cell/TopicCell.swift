@@ -9,7 +9,8 @@
 import UIKit
 
 class TopicCell: UITableViewCell {
-
+    
+    //MARK: - Outlets
     @IBOutlet weak var titleTopicLabel: UILabel!
     @IBOutlet weak var numVisitasLabel: UILabel!
     @IBOutlet weak var editTopicButton: UIButton!
@@ -17,26 +18,22 @@ class TopicCell: UITableViewCell {
     @IBOutlet weak var dateTopicLabel: UILabel!
     @IBOutlet weak var avatarUserImage: UIImageView!
     
+    //MARK: - Cycle life
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
     }
-
-
-    //func configure( title: String, numVisitas: String, numComents: String, dateTopic: String, avatar: String) {
+    
+    //MARK: - Functions
     func configure( title: String, numVisitas: String, numComents: String, dateTopic: String) {
         titleTopicLabel.text = title
         numVisitasLabel.text = numVisitas
         numComentsLabel.text = numComents
         dateTopicLabel.text = dateTopic
-        //avatarUserImage.image = UIImage(named: avatarUser)
-        
     }
     
     static func estimateRowHeight() -> CGFloat {
-        
         return 88.0
-        
     }
     
 }

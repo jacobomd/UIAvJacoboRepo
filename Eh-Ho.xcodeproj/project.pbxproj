@@ -64,6 +64,8 @@
 		11BE96FF22E9EE3E00450F45 /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BE96FE22E9EE3D00450F45 /* TopicCell.xib */; };
 		11C03B102357855E00C5ED3D /* PantallaInicialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C03B0E2357855E00C5ED3D /* PantallaInicialViewController.swift */; };
 		11C03B132357859700C5ED3D /* PantallaInicialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C03B122357859600C5ED3D /* PantallaInicialViewController.xib */; };
+		11D31103236C3B720036DF05 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D31102236C3B720036DF05 /* CustomButton.swift */; };
+		11D31105236C4C510036DF05 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D31104236C4C510036DF05 /* CustomView.swift */; };
 		11D43F6822EC42980053933A /* SendNewMessagePrivateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D43F6722EC42980053933A /* SendNewMessagePrivateResponse.swift */; };
 		11D43F6A22EC432C0053933A /* SendNewMessagePrivateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D43F6922EC432C0053933A /* SendNewMessagePrivateRequest.swift */; };
 		11D43F6C22EC45090053933A /* MessagesPrivatesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D43F6B22EC45090053933A /* MessagesPrivatesRepository.swift */; };
@@ -164,6 +166,8 @@
 		11BE96FE22E9EE3D00450F45 /* TopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
 		11C03B0E2357855E00C5ED3D /* PantallaInicialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantallaInicialViewController.swift; sourceTree = "<group>"; };
 		11C03B122357859600C5ED3D /* PantallaInicialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PantallaInicialViewController.xib; path = ../../../../../Practica_UI/Practica_UI/PantallaInicialViewController.xib; sourceTree = "<group>"; };
+		11D31102236C3B720036DF05 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		11D31104236C4C510036DF05 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		11D43F6722EC42980053933A /* SendNewMessagePrivateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNewMessagePrivateResponse.swift; sourceTree = "<group>"; };
 		11D43F6922EC432C0053933A /* SendNewMessagePrivateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNewMessagePrivateRequest.swift; sourceTree = "<group>"; };
 		11D43F6B22EC45090053933A /* MessagesPrivatesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesPrivatesRepository.swift; sourceTree = "<group>"; };
@@ -360,6 +364,15 @@
 				11C03B122357859600C5ED3D /* PantallaInicialViewController.xib */,
 			);
 			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		11D310FB236C28890036DF05 /* CustomIB */ = {
+			isa = PBXGroup;
+			children = (
+				11D31102236C3B720036DF05 /* CustomButton.swift */,
+				11D31104236C4C510036DF05 /* CustomView.swift */,
+			);
+			path = CustomIB;
 			sourceTree = "<group>";
 		};
 		11D43F6F22EC476F0053933A /* SendMessages */ = {
@@ -598,6 +611,7 @@
 		742A18CE22DE7889004C544D /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				11D310FB236C28890036DF05 /* CustomIB */,
 				742A18CF22DE789D004C544D /* UITableViewCellExten.swift */,
 				1121CC2623357EF300411A17 /* MinimTimeData.swift */,
 				11BA6924233754530035A1F3 /* CheckInternet.swift */,
@@ -769,6 +783,7 @@
 				11BAFEC522EB402D004C026E /* UsersRepositoryImpl.swift in Sources */,
 				118EF0FA22E36F3B00F57FA2 /* PostViewModel.swift in Sources */,
 				742A18C822DE6F23004C544D /* TopicsRouter.swift in Sources */,
+				11D31105236C4C510036DF05 /* CustomView.swift in Sources */,
 				118EF0E222E311AF00F57FA2 /* ListTopicsByCategoryResponse.swift in Sources */,
 				11A4529622E9834300439C70 /* CreateTopicsRouter.swift in Sources */,
 				742A18B322DE546B004C544D /* TabBarController.swift in Sources */,
@@ -815,6 +830,7 @@
 				11BAFEB622EB35F7004C026E /* UsersViewModel.swift in Sources */,
 				11D43F6C22EC45090053933A /* MessagesPrivatesRepository.swift in Sources */,
 				11BAFEBF22EB3DEF004C026E /* ListUsersResponse.swift in Sources */,
+				11D31103236C3B720036DF05 /* CustomButton.swift in Sources */,
 				1121CC2F23369B5300411A17 /* TopicData.swift in Sources */,
 				742A18E122DE858A004C544D /* AddNewTopicResponse.swift in Sources */,
 				11B3D2A822E580D400F81497 /* PostCreateViewController.swift in Sources */,

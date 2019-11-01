@@ -12,10 +12,12 @@ class UsersTableViewCell: UITableViewCell {
 
     @IBOutlet weak var labelUserName: UILabel!
     @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var messageButton: CustomButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        messageButton.alertButton = false
         
     }
 

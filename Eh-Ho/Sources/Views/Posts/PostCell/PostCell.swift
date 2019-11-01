@@ -10,20 +10,20 @@ import UIKit
 
 class PostCell: UITableViewCell {
     
+    //MARK: - Outlets
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var numberVisit: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var descripcion: UILabel!
     
-    
-
+    //MARK: - Cycle life
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
-
-
+    
+    //MARK: - Functions
     func configure(avatarImage: UIImage, userName: String, descripcion: String, numberVisit: String, date: String) {
         
         self.avatarImage.image = avatarImage

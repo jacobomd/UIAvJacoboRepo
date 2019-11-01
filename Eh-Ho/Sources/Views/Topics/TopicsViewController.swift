@@ -9,7 +9,8 @@
 import UIKit
 
 class TopicsViewController: UIViewController {
-
+    
+    //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var text_Descrip: UIImageView!
     @IBOutlet weak var temas_Title: UILabel!
@@ -17,9 +18,28 @@ class TopicsViewController: UIViewController {
     @IBOutlet weak var buttonAddTopicBig: UIButton!
     @IBOutlet weak var buttonSearch: UIButton!
     
+    //MARK: - Propierties
+    let viewModel: TopicsViewModel
+    var topics: [Topic] = []
+    var singleTopic: SingleTopicResponse2?
+    var avatarUserTopic: String = ""
+    var idTopics: Int = 0
+    var users: [User] = []
+    var topicsCD : [TopicData] = []
+    var connection : Bool = true
     
+    //MARK: - Inits
+    init(topicsViewModel: TopicsViewModel) {
+        self.viewModel = topicsViewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
     
+    //MARK: - RefreshControll
     lazy var refreshControl:UIRefreshControl = {
         let refresControl = UIRefreshControl()
         //QUE AL CAMBIAR EL VALOR, SE EJECUTE UN MÉTODO
@@ -31,39 +51,16 @@ class TopicsViewController: UIViewController {
     
     @objc func actualizarDatos(_ refresControl: UIRefreshControl){
         //AQUI TU TIENES QUE ACTUALIZAR TUS DATOS. TU DATASOURCE. LLAMAR A TU SERVIDOR, VOLVER A TRAER LOS DATOS. ELIMINAR O AÑADIR AL ELEMENTO PERSISTIDO
-        
         viewModel.viewDidLoad()
         //REFRESCO LA VISTA DE TABLA
         self.tableView.reloadData()
         //PARO EL REFRESH CONTROL
         refresControl.endRefreshing()
-        
     }
     
-
-    
-    let viewModel: TopicsViewModel
-    var topics: [Topic] = []
-    var singleTopic: SingleTopicResponse2?
-    var avatarUserTopic: String = ""
-    var idTopics: Int = 0
-    var users: [User] = []
-    var topicsCD : [TopicData] = []
-    var connection : Bool = true
-    
-    init(topicsViewModel: TopicsViewModel) {
-        self.viewModel = topicsViewModel
-
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
-    
+    //MARK: - Cycle life
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -76,11 +73,14 @@ class TopicsViewController: UIViewController {
         viewModel.viewDidLoad()
         tableView.refreshControl = refreshControl
         setUI()
-
     }
     
-
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //createView()
+    }
     
+    //MARK: - UI
     private func setUI() {
         let backItem = UIBarButtonItem()
         backItem.title = "Volver"
@@ -89,12 +89,7 @@ class TopicsViewController: UIViewController {
         navigationItem.backBarButtonItem = backItem
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        //createView()
-    }
-    
-    
+    //MARK: - Constraint by code
     private func createView() {
         
         buttonAddTopic.translatesAutoresizingMaskIntoConstraints = false
@@ -143,20 +138,19 @@ class TopicsViewController: UIViewController {
         
     }
     
- 
+    
+    //MARK: - Navigations
     @IBAction func buttonAddTopic(_ sender: Any) {
         navigationController?.pushViewController(CreateTopicsRouter.configureModule(), animated: true)
     }
-    
-
     
     @IBAction func buttonAddTopicBig(_ sender: Any) {
         navigationController?.pushViewController(CreateTopicsRouter.configureModule(), animated: true)
     }
     
-    
 }
 
+//MARK: - Extensions
 extension TopicsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -166,7 +160,7 @@ extension TopicsViewController: UITableViewDataSource {
             return topicsCD.count
         }
     }
-        
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.identifier, for: indexPath)
@@ -182,24 +176,24 @@ extension TopicsViewController: UITableViewDataSource {
             let numVisitas = topics[indexPath.row].views
             let numComents = topics[indexPath.row].postsCount
             let dateTopic = topics[indexPath.row].createdAt!
-          
-             viewModel.fetchSingleTopic(id: idTopics)
             
-//            let prueba = singleTopic.details.createdBy.avatarTemplate
-//            print("el avatar dentro de la tableview es \(prueba)")
-        
+            viewModel.fetchSingleTopic(id: idTopics)
+            
+            //            let prueba = singleTopic.details.createdBy.avatarTemplate
+            //            print("el avatar dentro de la tableview es \(prueba)")
+            
             let dateTopicFormater = convertDateFormater(date: dateTopic)
- 
+            
             //cell.configure(title: title, numVisitas: "\(numVisitas)", numComents: "\(numComents)", dateTopic: "\(dateTopicFormater)", avatar: avatar)
             
             cell.configure(title: title, numVisitas: "\(numVisitas)", numComents: "\(numComents)", dateTopic: "\(dateTopicFormater)")
             
         } else {
-//            let title = topicsCD[indexPath.row].title
-//            let numVisitas = topicsCD[indexPath.row].views
-//            let numComents = topicsCD[indexPath.row].postsCount
-//            let dateTopic = topicsCD[indexPath.row].createdAt
-//            cell.configure(title: title, numVisitas: "\(numVisitas)", numComents: "\(numComents)", dateTopic: dateTopic!)
+            //            let title = topicsCD[indexPath.row].title
+            //            let numVisitas = topicsCD[indexPath.row].views
+            //            let numComents = topicsCD[indexPath.row].postsCount
+            //            let dateTopic = topicsCD[indexPath.row].createdAt
+            //            cell.configure(title: title, numVisitas: "\(numVisitas)", numComents: "\(numComents)", dateTopic: dateTopic!)
         }
         
         return cell
@@ -245,7 +239,7 @@ protocol TopicsViewControllerProtocol: class {
 }
 
 extension TopicsViewController: TopicsViewControllerProtocol {
-
+    
     
     func showListTopicsByCategory(topics: [Topic], users: [User]) {
         self.topics = topics
@@ -255,7 +249,7 @@ extension TopicsViewController: TopicsViewControllerProtocol {
     
     func showSingleTopicById(singleTopic: SingleTopicResponse2) {
         self.singleTopic = singleTopic
-       let  prueba = singleTopic.details.createdBy.avatarTemplate
+        let  prueba = singleTopic.details.createdBy.avatarTemplate
         print(" ahora dentro de la vista : \(prueba)")
     }
     

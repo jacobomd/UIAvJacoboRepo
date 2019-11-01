@@ -10,6 +10,7 @@ import UIKit
 
 class PantallaInicialViewController: UIViewController {
     
+    //MARK: - Outets
     @IBOutlet weak var logo_Rectangulo: UIImageView!
     @IBOutlet weak var logo_Triangulo: UIImageView!
     @IBOutlet weak var logo: UIImageView!
@@ -18,6 +19,7 @@ class PantallaInicialViewController: UIViewController {
     @IBOutlet weak var logoWidthConstraint: NSLayoutConstraint!
     
     
+    //MARK: - Cycle life
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +40,7 @@ class PantallaInicialViewController: UIViewController {
         //createView()
     }
     
+    //MARK: - Animations
     private func animationsLogo() {
         
         

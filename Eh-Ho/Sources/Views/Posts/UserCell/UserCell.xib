@@ -26,7 +26,7 @@
                             <constraint firstAttribute="width" constant="48" id="r5i-e9-mth"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riR-UN-HMC">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riR-UN-HMC" customClass="CustomLabel" customModule="Eh_Ho" customModuleProvider="target">
                         <rect key="frame" x="8" y="57" width="48" height="13"/>
                         <attributedString key="attributedText">
                             <fragment content="Label">
@@ -38,6 +38,11 @@
                             </fragment>
                         </attributedString>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="colorText">
+                                <color key="value" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </view>
