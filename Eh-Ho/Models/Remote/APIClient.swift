@@ -29,8 +29,8 @@ final class SessionAPI {
                         
                     }
                 }
-            } catch _ {
-                print( String(data: data!, encoding: String.Encoding.utf8))
+            } catch let error {
+                print( error.localizedDescription)
             }
         }
         task.resume()
