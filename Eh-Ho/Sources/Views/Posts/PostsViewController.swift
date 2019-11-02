@@ -317,7 +317,6 @@ extension PostsViewController: UITableViewDataSource {
             
         }
         if tableView == topTopic {
-            print("El contador es \(topics.count)")
             count = topics.count
         }
         return count!

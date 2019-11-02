@@ -31,8 +31,7 @@ class UsersViewModel {
     }
     
     private func fetchListUsers() {
-        print("paso 1")
-        
+    
         if CheckInternet.Connection() {
         usersRepository.getListUsers { [weak self] result  in
             switch result {

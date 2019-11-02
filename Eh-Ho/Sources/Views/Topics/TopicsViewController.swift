@@ -249,8 +249,6 @@ extension TopicsViewController: TopicsViewControllerProtocol {
     
     func showSingleTopicById(singleTopic: SingleTopicResponse2) {
         self.singleTopic = singleTopic
-        let  prueba = singleTopic.details.createdBy.avatarTemplate
-        print(" ahora dentro de la vista : \(prueba)")
     }
     
     func showError(with message: String) {

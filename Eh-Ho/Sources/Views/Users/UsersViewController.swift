@@ -34,7 +34,6 @@ class UsersViewController: UIViewController {
         
         tableUsers.delegate = self
         tableUsers.dataSource = self
-        print("la cantidad de usuarios son \(users.count)")
         tableUsers.rowHeight = 60
         //self.title = "Usuarios"
 

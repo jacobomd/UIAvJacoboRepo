@@ -54,7 +54,6 @@ class PostViewModel {
                     self?.view?.showListPostssByTopic(posts: value.postStream.posts)
                     self?.mDataManagerPost.savePosts(post: value.postStream.posts)
                     self?.mDataManagerPost.saveLastDownload()
-                    print("llega el valor")
                 case .failure:
                     self?.view?.showError(with: "Error")
                 }
@@ -104,9 +103,6 @@ class PostViewModel {
             postsRepository.getListTopTopics() { [weak self] result  in
                 switch result {
                 case .success(let value):
-                    
-                    let data = value.topicList.topics
-                    print("LOS DATOS DE DATA SON : \(data)")
                     self?.view?.showListTopTopic(topics: value.topicList.topics)
                 case .failure:
                     self?.view?.showError(with: "Error")

@@ -42,8 +42,6 @@ class TopicsViewModel {
             case .success(let value):
                 //Enviariamos a la vista para mostrar la info
                 self.view?.showSingleTopicById(singleTopic: value)
-                //avatar = value.details.createdBy.avatarTemplate
-                print("LLEGA EL VALOR \(value.details.createdBy.avatarTemplate)")
             case .failure(let error):
                 //Enviaremos a la vista el error
                 print("\(error)")
@@ -54,17 +52,16 @@ class TopicsViewModel {
     //MARK: - Private functions
     private func fetchListTopicsByCategory() {
         if CheckInternet.Connection() {
-       topicsRepository.getListTopicsByCategory(id: id) { [weak self] result in
-           switch result {
-           case .success(let value):
-            self?.view?.showListTopicsByCategory(topics: value.topicList.topics, users: value.users)
-              self?.mDataManagerTopic.saveTopics(topic: value.topicList.topics)
-              self?.mDataManagerTopic.saveLastDownload()
-            print("llega el valor de la lissta de topicsssss")
-          case .failure:
-                self?.view?.showError(with: "Error")
-           }
-        }
+            topicsRepository.getListTopicsByCategory(id: id) { [weak self] result in
+                switch result {
+                case .success(let value):
+                    self?.view?.showListTopicsByCategory(topics: value.topicList.topics, users: value.users)
+                    self?.mDataManagerTopic.saveTopics(topic: value.topicList.topics)
+                    self?.mDataManagerTopic.saveLastDownload()
+                case .failure:
+                    self?.view?.showError(with: "Error")
+                }
+            }
         } else {
             self.view?.showListTopicsCD(topics: mDataManagerTopic.dataTopics(id: id))
         }
