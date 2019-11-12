@@ -48,6 +48,8 @@
 		11B3D2A922E580D400F81497 /* PostCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11B3D2A722E580D400F81497 /* PostCreateViewController.xib */; };
 		11B3D2AB22E5810100F81497 /* PostCreateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3D2AA22E5810100F81497 /* PostCreateRouter.swift */; };
 		11B3D2AD22E5811F00F81497 /* PostCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3D2AC22E5811F00F81497 /* PostCreateViewModel.swift */; };
+		11B5F422237A8CBE00EE27E5 /* PantallaInicialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B5F420237A8CBE00EE27E5 /* PantallaInicialViewController.swift */; };
+		11B5F423237A8CBE00EE27E5 /* PantallaInicialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11B5F421237A8CBE00EE27E5 /* PantallaInicialViewController.xib */; };
 		11BA5183233137CE007A137B /* DatabaseCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BA5182233137CE007A137B /* DatabaseCoreData.swift */; };
 		11BA518723313898007A137B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BA518623313898007A137B /* DataManager.swift */; };
 		11BA6925233754530035A1F3 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BA6924233754530035A1F3 /* CheckInternet.swift */; };
@@ -62,8 +64,6 @@
 		11BAFEC322EB4015004C026E /* UsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BAFEC222EB4015004C026E /* UsersRepository.swift */; };
 		11BAFEC522EB402D004C026E /* UsersRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BAFEC422EB402D004C026E /* UsersRepositoryImpl.swift */; };
 		11BE96FF22E9EE3E00450F45 /* TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BE96FE22E9EE3D00450F45 /* TopicCell.xib */; };
-		11C03B102357855E00C5ED3D /* PantallaInicialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C03B0E2357855E00C5ED3D /* PantallaInicialViewController.swift */; };
-		11C03B132357859700C5ED3D /* PantallaInicialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C03B122357859600C5ED3D /* PantallaInicialViewController.xib */; };
 		11D31103236C3B720036DF05 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D31102236C3B720036DF05 /* CustomButton.swift */; };
 		11D31105236C4C510036DF05 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D31104236C4C510036DF05 /* CustomView.swift */; };
 		11D43F6822EC42980053933A /* SendNewMessagePrivateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D43F6722EC42980053933A /* SendNewMessagePrivateResponse.swift */; };
@@ -150,6 +150,8 @@
 		11B3D2A722E580D400F81497 /* PostCreateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCreateViewController.xib; sourceTree = "<group>"; };
 		11B3D2AA22E5810100F81497 /* PostCreateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateRouter.swift; sourceTree = "<group>"; };
 		11B3D2AC22E5811F00F81497 /* PostCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreateViewModel.swift; sourceTree = "<group>"; };
+		11B5F420237A8CBE00EE27E5 /* PantallaInicialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantallaInicialViewController.swift; sourceTree = "<group>"; };
+		11B5F421237A8CBE00EE27E5 /* PantallaInicialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PantallaInicialViewController.xib; sourceTree = "<group>"; };
 		11BA5182233137CE007A137B /* DatabaseCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCoreData.swift; sourceTree = "<group>"; };
 		11BA518623313898007A137B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		11BA6924233754530035A1F3 /* CheckInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
@@ -164,8 +166,6 @@
 		11BAFEC222EB4015004C026E /* UsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepository.swift; sourceTree = "<group>"; };
 		11BAFEC422EB402D004C026E /* UsersRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepositoryImpl.swift; sourceTree = "<group>"; };
 		11BE96FE22E9EE3D00450F45 /* TopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicCell.xib; sourceTree = "<group>"; };
-		11C03B0E2357855E00C5ED3D /* PantallaInicialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantallaInicialViewController.swift; sourceTree = "<group>"; };
-		11C03B122357859600C5ED3D /* PantallaInicialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PantallaInicialViewController.xib; path = ../../../../../Practica_UI/Practica_UI/PantallaInicialViewController.xib; sourceTree = "<group>"; };
 		11D31102236C3B720036DF05 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		11D31104236C4C510036DF05 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		11D43F6722EC42980053933A /* SendNewMessagePrivateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNewMessagePrivateResponse.swift; sourceTree = "<group>"; };
@@ -360,8 +360,8 @@
 		11C03B0D2357852200C5ED3D /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
-				11C03B0E2357855E00C5ED3D /* PantallaInicialViewController.swift */,
-				11C03B122357859600C5ED3D /* PantallaInicialViewController.xib */,
+				11B5F420237A8CBE00EE27E5 /* PantallaInicialViewController.swift */,
+				11B5F421237A8CBE00EE27E5 /* PantallaInicialViewController.xib */,
 			);
 			path = SplashScreen;
 			sourceTree = "<group>";
@@ -701,6 +701,7 @@
 			files = (
 				11D43F7322EC47B10053933A /* SendMessageViewController.xib in Resources */,
 				742A18A422DE530B004C544D /* LaunchScreen.storyboard in Resources */,
+				11B5F423237A8CBE00EE27E5 /* PantallaInicialViewController.xib in Resources */,
 				1195AD762357EE720056E58F /* SFProDisplay-UltraLight.ttf in Resources */,
 				742A18A122DE530B004C544D /* Assets.xcassets in Resources */,
 				11E55FAB22E23163008FD871 /* CategoriesViewController.xib in Resources */,
@@ -712,7 +713,6 @@
 				11BE96FF22E9EE3E00450F45 /* TopicCell.xib in Resources */,
 				1102DABB236A157C0005F9BB /* TopTopicCell.xib in Resources */,
 				742A18D522DE7C47004C544D /* DetailTopicViewController.xib in Resources */,
-				11C03B132357859700C5ED3D /* PantallaInicialViewController.xib in Resources */,
 				118EF0F622E36F0200F57FA2 /* PostsViewController.xib in Resources */,
 				118C144C23674F6A000806BA /* UserCell.xib in Resources */,
 				11B3D2A922E580D400F81497 /* PostCreateViewController.xib in Resources */,
@@ -834,6 +834,7 @@
 				1121CC2F23369B5300411A17 /* TopicData.swift in Sources */,
 				742A18E122DE858A004C544D /* AddNewTopicResponse.swift in Sources */,
 				11B3D2A822E580D400F81497 /* PostCreateViewController.swift in Sources */,
+				11B5F422237A8CBE00EE27E5 /* PantallaInicialViewController.swift in Sources */,
 				742A18BE22DE620C004C544D /* APIClient.swift in Sources */,
 				1121CC2B23360C4F00411A17 /* Eh-HoDatabase.xcdatamodel in Sources */,
 				11BAFEBC22EB367A004C026E /* UsersTableViewCell.swift in Sources */,
@@ -844,7 +845,6 @@
 				11E55FAF22E231A3008FD871 /* CategoriesRouter.swift in Sources */,
 				11B3D2AD22E5811F00F81497 /* PostCreateViewModel.swift in Sources */,
 				118EF0E822E34D7100F57FA2 /* TopicCell.swift in Sources */,
-				11C03B102357855E00C5ED3D /* PantallaInicialViewController.swift in Sources */,
 				11DAA7D322E829AE00EE1238 /* UpdateSingleTopicResponse.swift in Sources */,
 				11D43F6A22EC432C0053933A /* SendNewMessagePrivateRequest.swift in Sources */,
 				11D43F7222EC47B10053933A /* SendMessageViewController.swift in Sources */,
